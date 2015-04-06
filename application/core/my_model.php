@@ -36,6 +36,9 @@ class My_model extends CI_model{
 	function findbyid($id){
 		return $this->db->where('id',$id)->limit(1)->get($this->table)->row();
 	}
+	function findbyfield($field,$value){
+		return $this->db->where($field,$value)->limit(1)->get($this->table)->row();
+	}
 	function exist($cond){
 		$query = $this->db->get_where($this->table, $cond);
 		$count = $query->num_rows(); 

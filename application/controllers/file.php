@@ -1,7 +1,29 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class File extends CI_Controller {
-
+	
+	function __construct()
+	{
+		parent::__construct();
+		session_start();
+		$this->load->model('user_model');
+		if (isset($_SESSION['username'])) {
+			$res=$this
+			->user_model
+			->verify_user(
+				array(
+					'user_id'=>$_SESSION['user_id'],
+					'username'=>$_SESSION['username'],
+					'password'=>$_SESSION['password']
+					)
+				);
+			if ($res == false) { redirect('logout'); exit(); }
+		}
+		else
+		{
+			redirect('logout');
+		}
+	}
 	public function index()
 	{
 		$this->load->view('nav');
@@ -10,8 +32,8 @@ class File extends CI_Controller {
 		$this->load->view('welcome');
 	}
 	function center(){
-		$this->load->model('centers_model');
-		$this->load->view('file/new_center');
+		$this->load->model('cat_model');
+		$this->load->view('define/new_cat');
 	}
 	function new_center(){
 		if ($this->input->post()) {
@@ -26,10 +48,10 @@ class File extends CI_Controller {
 			$result=$this->centers_model->insert($data);
 			if ($result > 0 ) {
 				$return['message']='زیاد کردنی بنکەی نوێ سەرکەوتوانە بۆ';
-				$this->load->view('file/new_center',$return);
+				$this->load->view('define/new_center',$return);
 			} else {
 				$return['message']='زیاد کردن سەرکەوتو نەبۆ';
-				$this->load->view('file/new_center',$return);
+				$this->load->view('define/new_center',$return);
 			}
 		}
 	}
@@ -38,7 +60,7 @@ class File extends CI_Controller {
 		if (!empty($edit_id)) {
 			$data['edit_id']=$edit_id;
 			$this->load->model('centers_model');
-			$this->load->view('file/edit_center',$data);
+			$this->load->view('define/edit_center',$data);
 		} else {
 			echo 'Record ID not find.!';
 		}
@@ -56,10 +78,10 @@ class File extends CI_Controller {
 			$result=$this->centers_model->update($data,array('id'=>$this->uri->segment(3)));
 			if ($result > 0 ) {
 				$return['message']='گوڕانکاری بە سەرکەوتویی پاشەکەوت کڕا';
-				$this->load->view('file/new_center',$return);
+				$this->load->view('define/new_center',$return);
 			} else {
 				$return['message']='گوڕانکارێکان سەرکەوتۆ نەبۆن.';
-				$this->load->view('file/new_center',$return);
+				$this->load->view('define/new_center',$return);
 			}
 		}
 	}
@@ -71,10 +93,10 @@ class File extends CI_Controller {
 			echo "ئاکامەکە سەرکەوتۆ نەبۆ. !";
 		}
 	}
-	function customers(){
+	function customer(){
 		$this->load->model('customers_model');
 		$this->load->model('centers_model');
-		$this->load->view('file/new_customer');
+		$this->load->view('define/new_customer');
 	}
 	function new_customer(){
 		if ($this->input->post()) {

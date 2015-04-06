@@ -1,3 +1,11 @@
+<style type="text/css">
+  .profile-image{
+    max-width:34px !important;
+    position:absolute;
+    left:130px;
+    top:8px;
+  }
+</style>
 <meta charset="utf-8">
 	<link href="<?php echo base_url(); ?>asset/css/bootstrap.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>asset/css/bootstrap_rtl.css" rel="stylesheet">
@@ -30,6 +38,7 @@
                  <ul class="dropdown-menu" role="menu">
                   <li><?= anchor('define/storage',' کۆگا') ?></a></li>
                   <li class="divider"></li>
+                  <li><?= anchor('define/cat',' گرۆپی کاڵاکان') ?></a></li>
                   <li><?= anchor('define/product',' کاڵاکان') ?></a></li>
                   <li><?= anchor('define/unit',' یەکەی کاڵاکان') ?></a></li>
                   <li class="divider"></li>
@@ -40,8 +49,10 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">کارگێری<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                   <li><?= anchor('operation/purchase','کڕینی کاڵا') ?></a></li>
-                   <li class="divider"></li>
+                  <li><?= anchor('operation/purchase_list','ریزی فاکتۆرەکانی کڕینی') ?></a></li>
+                  <li class="divider"></li>
                   <li><?= anchor('operation/sale','فرۆشی کاڵا') ?></a></li>
+                  <li><?= anchor('operation/sale_list','ریزی فاکتۆرەکانی فرۆش') ?></a></li>
                    <li class="divider"></li>
                   <li><?= anchor('operation/payment','وەرگرتنی پارە') ?></a></li>
                 </ul>
@@ -59,6 +70,16 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">ڕاپۆرت<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                   <li><?= anchor('reports/invoice_list','لیستی فاکتۆرەکان') ?></a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left col-sm-1"></ul>
+            <ul class="nav navbar-nav navbar-left">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php $user=$this->user_model->findbyfield('user_id',$_SESSION['user_id']);  ?><?php echo $user->f_name.' '.$user->m_name; ?> <img src="<?php echo base_url().'asset/img/users/'.$user->image_file; ?>" class="profile-image img-circle"> <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><?= anchor('logout', 'بینینی پروفایل');?> </li>
+                  <li><?= anchor('logout', 'دەرچون');?></li>
                 </ul>
               </li>
             </ul>

@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "file";
 $route['404_override'] = 'file/Error404';
+$route['logout']='login/logout';
 
 
 /* End of file routes.php */
