@@ -98,12 +98,13 @@ class Operation extends CI_Controller {
 					$this->sale_details_model->insert($data_item);
 				}
 				$this->cart->destroy();
-				$data['message']='<div class="alert alert-success">پاشکەوت کردن سەرکەوتۆ بۆ..!</div>';
+				$data['message']='<div class="alert alert-success">پاشکەوت کردن سەرکەوتۆ بۆ..! '.$sale_id.'</div>';
 				if (isset($_SESSION['payment']['type']) && isset($_SESSION['payment']['amount'])) {
 				$this->load->model('payment_model');
 				date_default_timezone_set('UTC');
 				$payment=array(
-					'sale_id'  => $sale_id,
+					'customer_id' =>$this->input->post('customer_id'),
+					'sale_id'     =>$sale_id,
 					'type'        =>$_SESSION['payment']['type'],
 					'amount'      =>$_SESSION['payment']['amount'],
 					'description' =>$_SESSION['payment']['description'],
@@ -118,6 +119,7 @@ class Operation extends CI_Controller {
 		} else {
 			$data['message']='<div class="alert alert-danger">Invalid Data..!</div>';
 		}
+		$this->load->model('cat_model');
 		$this->load->model('product_model');
 		$this->load->model('unit_model');
 		$this->load->model('customer_model');
@@ -140,6 +142,44 @@ class Operation extends CI_Controller {
 	}
 	function payment_delete(){
 		unset($_SESSION['payment']);
+	}
+	function sale_back(){
+		$this->load->model('sale_back_model');
+		$this->load->model('customer_model');
+		$this->load->model('sale_model');
+		$this->load->view('operation/sale_back');
+	}
+	function sale_back_save(){
+		if ($this->input->post()) {
+			$sale_back=array(
+				'sale_id' => $this->input->post('sale_id'),
+				'product_id' => $this->input->post('product_id'),
+				'unit_id' => $this->input->post('unit_id'),
+				'quantity' => $this->input->post('quantity'),
+				'date_time' => $this->input->post('date_time'),
+				'description' => $this->input->post('description'),
+				'user_id'     => $_SESSION['user_id']
+				);
+			$this->load->model('sale_back_model');
+			$res=$this->sale_back_model->insert($sale_back);
+			if ($res == 1) {
+				$result['message']="<div class='alert alert-success'>Data was saved successfuly</div>";
+			} else {
+				$result['message']="<div class='alert alert-success'>Data was saved successfuly</div>";
+			}
+			$this->load->model('customer_model');
+			$this->load->model('sale_model');
+			$this->load->view('operation/sale_back',$result);
+		}
+	}
+	function load_invoice_list(){
+		$this->load->model('sale_model');
+		$this->load->view('operation/load_invoice_list');
+	}
+	function load_invoice_products(){
+		$this->load->model('sale_details_model');
+		$this->load->model('product_model');
+		$this->load->view('operation/load_invoice_products');
 	}
 	function load_product(){
 		if ($this->uri->segment(3)) {

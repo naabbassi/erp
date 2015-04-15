@@ -146,24 +146,9 @@ class Define extends CI_Controller {
 		$this->load->view('define/new_customer');
 	}
 	function new_customer(){
-		echo '<br><br><br><br><br><br>';
-		echo base_url().'/uploads/';
-		$config['upload_path'] = base_url().'/uploads/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_width'] = 0;
-        $config['max_height'] = 0;
-        $config['max_size'] = 0;
-        $config['encrypt_name'] = TRUE;
-		$this->load->library('upload', $config);
 		$this->load->model('customer_model');
-		if (!$this->upload->do_upload())
+		if($this->input->post())
 		{
-			$return = array('message' => $this->upload->display_errors());
-			$this->load->view('define/new_customer', $return);
-		}
-		elseif($this->input->post())
-		{
-			$data = $this->upload->data();
 			$db_data = array(
 					'f_name'=>$this->input->post('f_name'),
 					'm_name'=>$this->input->post('m_name'),
@@ -172,11 +157,10 @@ class Define extends CI_Controller {
 					'email'=>$this->input->post('email'),
 					'address'=>$this->input->post('address'),
 					'suporter'=>$this->input->post('suporter'),
-					'image'=>$data['file_name'],
 					'user_id'=>$_SESSION['user_id']
 					);
 			if($this->customer_model->insert($db_data)){
-				$return['message']='زیاد کردنی موشتەری نوێ سەرکەوتوانە بۆs';
+				$return['message']='زیاد کردنی موشتەری نوێ سەرکەوتوانە بۆ.';
 				$this->load->view('define/new_customer', $return);
 			}
 		}
@@ -185,7 +169,6 @@ class Define extends CI_Controller {
 		$edit_id=$this->uri->segment(3);
 		if (!empty($edit_id)) {
 			$data['edit_id']=$edit_id;
-			$this->load->model('centers_model');
 			$this->load->model('customer_model');
 			$this->load->view('define/edit_customer',$data);
 		} else {
@@ -195,28 +178,30 @@ class Define extends CI_Controller {
 	function update_customer(){
 		if ($this->input->post() && $this->uri->segment(3)) {
 			$data=array(
-				'center_id'=>$this->input->post('center_id'),
-				'name'=>$this->input->post('name'),
+				'f_name'=>$this->input->post('f_name'),
+				'm_name'=>$this->input->post('m_name'),
+				'l_name'=>$this->input->post('l_name'),
 				'phone'=>$this->input->post('phone'),
+				'email'=>$this->input->post('email'),
 				'address'=>$this->input->post('address'),
-				'suporter'=>$this->input->post('suporter')
+				'suporter'=>$this->input->post('suporter'),
+				'user_id'=>$_SESSION['user_id']
 				);
-			$this->load->model('centers_model');
 			$this->load->model('customer_model');
 			$result=$this->customer_model->update($data,array('id'=>$this->uri->segment(3)));
 			if ($result > 0 ) {
 				$return['message']='گوڕانکاری بە سەرکەوتویی پاشەکەوت کڕا';
-				$this->load->view('define/new_customer',$return);
 			} else {
 				$return['message']='گوڕانکارێکان سەرکەوتۆ نەبۆن.';
-				$this->load->view('define/new_customer',$return);
 			}
+			$this->load->view('define/new_customer',$return);
 		}
 	}
 	function delete_customer(){
 		if($this->uri->segment(3)){
 			$this->load->model('customer_model');
 			$this->customer_model->delete(array('id'=>$this->uri->segment(3)));
+			echo "ئاکامەکە سەرکەوتۆ بۆ. !";
 		} else {
 			echo "ئاکامەکە سەرکەوتۆ نەبۆ. !";
 		}

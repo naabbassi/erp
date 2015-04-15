@@ -31,6 +31,19 @@ class File extends CI_Controller {
 	function welcome(){
 		$this->load->view('welcome');
 	}
+	function backup(){
+		$this->load->dbutil();
+		$config = array(
+                'ignore'      => array('user'),           // List of tables to omit from the backup
+                'format'      => 'zip',             // gzip, zip, txt
+              );
+		$backup =& $this->dbutil->backup($config); 
+		// Load the download helper and send the file to your desktop
+		$this->load->helper('download');
+		force_download('ERP_BackUp_'.date('Y/m/d').'.zip',$backup);
+		$data['message']='<div class="alert alert-info">BakcUp File was created successfuly</div>';
+		redirect('file',$data);
+	}
 	function center(){
 		$this->load->model('cat_model');
 		$this->load->view('define/new_cat');

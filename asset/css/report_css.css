@@ -109,7 +109,7 @@
 		color:#555;
 		letter-spacing:0.5px;
 		text-align:right;
-		line-height:14px;
+		line-height:20px;
 	}
 	.footer{
 		position:absolute;
@@ -140,6 +140,13 @@
 		float:right;
 		text-align:right;
 	}
+	.payment_title{
+		background-color:#fff !important;
+		font-size:14px;
+		color: #3399cc;
+		border:none;
+		margin-top:10px;
+	}
 	hr{
 		height:0;
 		margin:10px 0 10px -10px;
@@ -148,7 +155,7 @@
 	table{
 		width:100%;
 		border-collapse:collapse;
-		border:2px solid #3399cc;
+		
 		font-size:13px;	
 	}
 	thead{

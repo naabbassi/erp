@@ -90,14 +90,14 @@
 	 					} else {
 	 						$payment_amount= '0';
 	 					} ?>
-	 				<td class="text-primary text-center"><?php echo number_format($sum); ?> $</td>
-	 				<td class="text-info text-center"><?php echo number_format($key->discount); ?> $</td>
-	 				<td class="text-success text-center"><?php echo number_format($payment_amount); ?> $</td>
-	 				<td class="text-danger text-center"><?php echo number_format($sum-$key->discount-$payment_amount); ?> $</td>
+	 				<td class="text-primary text-center"><?php echo number_format($sum); ?> IQD</td>
+	 				<td class="text-info text-center"><?php echo number_format($key->discount); ?> IQD</td>
+	 				<td class="text-success text-center"><?php echo number_format($payment_amount); ?> IQD</td>
+	 				<td class="text-danger text-center"><?php echo number_format($sum-$key->discount-$payment_amount); ?> IQD</td>
 	 				<td class="text-center warning operation"><small>
 	 					<a href="<?php echo $key->id; ?>" value="<?php echo $key->title; ?>" id="edit">گۆڕانکاری</a> &nbsp;&nbsp;&nbsp;
 	 					<?php 	$atts = array(
-			              'width'      => '1000',
+			              'width'      => '1100',
 			              'height'     => '650',
 			              'scrollbars' => 'yes',
 			              'status'     => 'yes',
@@ -117,10 +117,10 @@
 	 		 } ?>
 	 		 	 			<tr>
 	 				<td colspan="5" class="text-center"> کۆی گشتی : </td>
-	 				<td class="success text-info text-center" ><small><?php echo number_format($total,2)  ?> $</small></td>
-	 				<td class="info text-info text-center" ><small><?php echo number_format($discount,2)  ?> $</small></td>
-	 				<td class="success text-info text-center" ><small><?php echo number_format($paid,2)  ?> $</small></td>
-	 				<td class="danger text-info text-center" ><small><?php echo number_format($debet,2)  ?> $</small></td>
+	 				<td class="success text-info text-center" ><small><?php echo number_format($total,2)  ?> IQD</small></td>
+	 				<td class="info text-info text-center" ><small><?php echo number_format($discount,2)  ?> IQD</small></td>
+	 				<td class="success text-info text-center" ><small><?php echo number_format($paid,2)  ?> IQD</small></td>
+	 				<td class="danger text-info text-center" ><small><?php echo number_format($debet,2)  ?> IQD</small></td>
 	 			</tr>
 	 	</table>
 	 </div>

@@ -36,7 +36,7 @@
 			echo "<p>تێبینی : ".$sale->description."</p>";
 		?>
 	</div>
-	<table>
+	<table> 
 		<thead>
 			<th style="width:30px;font-size:14px;">#</th>
 			<th colspan="2">ناوەڕۆک (Content)</th>
@@ -57,8 +57,8 @@
 			echo "<td colspan='2'>".$product->title."</td>";
 			echo "<td>".$key->quantity."</td>";
 			echo "<td>".$unit->title."</td>";
-			echo "<td>".number_format($key->price,2)." $</td>";
-			echo "<td>".number_format($key->price*$key->quantity,2)."</td>";
+			echo "<td>".number_format($key->price)." دینار</td>";
+			echo "<td>".number_format($key->price*$key->quantity)." دینار</td>";
 			echo "</tr>";
 			$no++;
 			$total=$key->price * $key->quantity;
@@ -67,17 +67,24 @@
 		?>
 		<tr>
 			<td class=" text-center" colspan="6">کۆی گشتی (Grand Total) : </td>
-			<td class="sum"><p class="underline"><?php echo number_format($invoice_total,2) ?> $</p></td>
+			<td class="sum"><p class="underline"><?php echo number_format($invoice_total) ?> دینار</p></td>
 		</tr>
 		<tr>
 			<td class="red-text text-center" colspan="6">داشکاندن (Discount) : </td>
-			<td class="red-text ">( <?php echo number_format($sale->discount,2) ?> $ )</td>
+			<td class="red-text ">( <?php echo number_format($sale->discount) ?> دینار )</td>
 		</tr>
 		<tr>
 			<td class=" text-center" colspan="6">کۆی گشتی و داشکاندن(Grand Total With Discount): </td>
-			<td class="sum"><p class="underline"><?php echo number_format($invoice_total-$sale->discount,2) ?> $</p></td>
+			<td class="sum"><p class="underline"><?php echo number_format($invoice_total-$sale->discount) ?> دینار</p></td>
 		</tr>
-		<thead><th colspan="7">پارەی دڕاو (Payment) :</th></thead>
+		<tr><td colspan="6" class="payment_title">.: پارەی دراو (Payment) :.</td></tr>
+		<thead >
+			<th >#</th>
+			<th >شێواز (Payment Kind) :</th>
+			<th >بەروار (Date) :</th>
+			<th colspan="2">تێبینی (Description) :</th>
+			<th>بڕی پارە (Amount)</th>
+		</thead>
 		<?php
 		$paid=$this->payment_model->select(array('sale_id'=>$sale->id));
 		$paid_no=1;
@@ -88,18 +95,18 @@
 						<td class="text-center" colspan='1'><?php echo $key->type ?></td>
 						<td class="text-center" colspan="1"><?php echo $key->date_time ?></td>
 						<td class="text-center" colspan="2"><?php echo $key->description ?></td>
-						<td class="text-center"><?php echo number_format($key->amount)?> $</td>
+						<td class="text-center"><?php echo number_format($key->amount)?> دینار</td>
 					</tr>
 				<?php 
 				$total_paid=$total_paid +$key->amount;
 				}	?>
 				<tr>
-					<td  colspan="6">کۆی پارەی دڕاو بۆ ئەم فاکتورە (Total Payment for this invoice):</td>
-					<td >(<?php echo number_format($total_paid )?> $)</td>
+					<td  colspan="6">کۆی پارەی دڕاو بۆ ئەم فاکتورە (Payment Due this Invoice):</td>
+					<td >(<?php echo number_format($total_paid )?> دینار)</td>
 				</tr>
 				<tr>
-					<td  class="red-text" colspan="6">بڕی پارەی ماوە سەبارەت بە ئەم فاکتورە (Debet Due this invoice): </td>
-					<td  class="sum red-text"><p class="underline"><?php echo number_format($invoice_total-$sale->discount-$total_paid )?> $</p></td>
+					<td  class="red-text" colspan="6">بڕی پارەی ماوە سەبارەت بە ئەم فاکتورە (Debt Due this invoice): </td>
+					<td  class="sum red-text"><p class="underline"><?php echo number_format($invoice_total-$sale->discount-$total_paid )?> دینار</p></td>
 				</tr>
 	</table>
 	<br><br><br><br><br>

@@ -55,12 +55,6 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-4 control-label">وێنە : </label>
-    <div class="col-sm-8">
-      <input class="form-control" name="userfile" type="file">
-    </div>
-  </div>
-  <div class="form-group">
     <div class="col-sm-offset-4 col-sm-8">
       <button type="submit" class="btn btn-success col-sm-4">پاشکەوت کردن </button>
     </div>
@@ -90,7 +84,7 @@
       <td><?php echo $no; ?></td>
       <td><?php echo $key->f_name.' '.$key->m_name.' '.$key->l_name; ?></td>
       <td><?php echo $key->phone; ?></td>
-      <td><?php echo $key->email; ?></td>
+      <td><?php echo $key->address; ?></td>
       <td><?php echo $key->suporter; ?></td>
       <td><a href="<?php echo $key->id; ?>" id="edit">گوڕانکاری</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $key->id; ?>" id="delete">ڕەش کردنەوە</a></td>
     </tr>

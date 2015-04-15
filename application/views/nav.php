@@ -53,6 +53,7 @@
                   <li class="divider"></li>
                   <li><?= anchor('operation/sale','فرۆشی کاڵا') ?></a></li>
                   <li><?= anchor('operation/sale_list','ریزی فاکتۆرەکانی فرۆش') ?></a></li>
+                  <li><?= anchor('operation/sale_back','گەڕانەوە لە فرۆش') ?></a></li>
                    <li class="divider"></li>
                   <li><?= anchor('operation/payment','وەرگرتنی پارە') ?></a></li>
                 </ul>
@@ -60,16 +61,16 @@
                <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">ژمێریاری<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><?= anchor('operation/purchase','هەژمارەکان') ?></a></li>
+                  <li><?= anchor('accounting/accounts_manager','هەژمارەکان') ?></a></li>
                    <li class="divider"></li>
-                  <li><?= anchor('operation/sale','پاشکەوت کردنی بەڵگە') ?></a></li>
+                  <li><?= anchor('accounting/accounting_record','پاشکەوت کردنی بەڵگە') ?></a></li>
                    <li class="divider"></li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">ڕاپۆرت<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><?= anchor('reports/invoice_list','لیستی فاکتۆرەکان') ?></a></li>
+                  <li><?= anchor('reports/product_summary','گوژمەی کاڵا') ?></a></li>
                 </ul>
               </li>
             </ul>
