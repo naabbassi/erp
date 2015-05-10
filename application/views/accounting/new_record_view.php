@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>New Accounting Record</title>
+	<title>تومار کردنی بەڵگەی ژمێریاری</title>
 </head>
 <body>
 <div class="container">
@@ -9,8 +9,8 @@
 	?>
 	<!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist" id="record_tab">
-  <li class="active"><a href="#items" role="tab" data-toggle="tab">Record Items</a></li>
-  <li><a href="#record" role="tab" data-toggle="tab">Record Details</a></li>
+  <li class="active"><a href="#items" role="tab" data-toggle="tab">زیاد کردن</a></li>
+  <li><a href="#record" role="tab" data-toggle="tab">وردە کاری</a></li>
 </ul>
 
 <!-- Tab panes -->
@@ -20,7 +20,7 @@
   		<div class="col-md-12">
   		<div class="col-md-6">
 			  <div class="form-group">
-			    <label class="col-sm-4 control-label">Accounts Group</label>
+			    <label class="col-sm-4 control-label">گروپی هەژمار :</label>
 			    <div class="col-sm-8">
 				    <select name="group_id" class="form-control" id="group_accounts" required>
 				    	<option></option>
@@ -34,7 +34,7 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-			    <label for="inputPassword3" class="col-sm-4 control-label">Ledger Accounts</label>
+			    <label for="inputPassword3" class="col-sm-4 control-label">هەژماری سەرەکی :</label>
 			    <div class="col-sm-8">
 				    <select name="ledger_id" class="form-control" id="ledger_accounts" required>
 				    	<option></option>
@@ -42,7 +42,7 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-			    <label  class="col-sm-4 control-label">Subsaidiary Accounts</label>
+			    <label  class="col-sm-4 control-label">ژێر هەژمارە :</label>
 			    <div class="col-sm-8">
 				    <select name="sub_id" class="form-control" id="sub_accounts" required>
 				    	<option ></option>
@@ -50,7 +50,7 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-			    <label  class="col-sm-4 control-label">Detailed Accounts</label>
+			    <label  class="col-sm-4 control-label">هەژماری ورد :</label>
 			    <div class="col-sm-8" id="detail_accounts">
 
 				</div>
@@ -58,41 +58,41 @@
 		</div>
 		<div class="col-md-6">
 			  <div class="form-group">
-				  	<label class="col-sm-3 control-label">Title :</label>
+				  	<label class="col-sm-3 control-label">سەردێر :</label>
 			  	<div class="col-sm-9">
 				  	<input class="form-control" name="title" type="text">
 			  	</div>
 			  </div>
 			  <div class="form-group">
-				  	<label class="col-sm-3 control-label">Date :</label>
+				  	<label class="col-sm-3 control-label">بەروار :</label>
 			  	<div class="col-sm-9">
 				  	<input class="form-control" name="item_date" type="date" required>
 			  	</div>
 			  </div>
 			  <div class="form-group">
-			    <label  class="col-sm-3 control-label">Debit</label>
+			    <label  class="col-sm-3 control-label">قەرزدار</label>
 			    <div class="col-sm-9">
 				    <div class="input-group">
 				      <input class="form-control" type="text" id="debit" name="debit" placeholder="Debit Amount" required>
-				      <div class="input-group-addon">$</div>
+				      <div class="input-group-addon">دینار</div>
 					</div>
 				</div>
 			  </div>
 			  <div class="form-group">
-			    <label  class="col-sm-3 control-label">Credit</label>
+			    <label  class="col-sm-3 control-label">قەرز دێر</label>
 			    <div class="col-sm-9">
 				    <div class="input-group">
 				      <input class="form-control" type="text" id="credit" name="credit" placeholder="Credit Amount" required>
-				      <div class="input-group-addon">$</div>
+				      <div class="input-group-addon">دینار</div>
 					</div>
 				</div>
 			  </div>
 		</div><div class="clearfix"></div><br>
 	        <div class="form-group">
         <div class="col-sm-offset-1 col-sm-5">
-          <button type="submit" id="cost_form_submit" class="btn btn-primary">Add Item To Record</button>&nbsp;&nbsp;
-          <a href="#" class="btn btn-success" id="next">Go To Next Step</a>&nbsp;&nbsp;
-          <a href="#" class="btn btn-info" id="refresh">Load Items</a>
+          <button type="submit" id="cost_form_submit" class="btn btn-primary">زیاد بکە</button>&nbsp;&nbsp;
+          <a href="#" class="btn btn-success" id="next">برو هەنگاوی دووەم</a>&nbsp;&nbsp;
+          <a href="#" class="btn btn-info" id="refresh">وەرگرتن</a>
         </div>
       </div>
 	  </div>
@@ -100,28 +100,28 @@
 	<div class="col-md-12" id="table_loader"></div>
   </div>
   <div class="tab-pane" id="record">
-  	<form class="form-horizontal" id="record_form" action="accounting/submit_record" method="post">
+  	<?php echo form_open('accounting/submit_record',array('class'=>'form-horizontal','id'=>'record_form')); ?>
 	  	<div class="col-md-6">
 			<div class="form-group">
-				<label class="col-sm-3 control-label">Title :</label>
+				<label class="col-sm-3 control-label">سەردێر :</label>
 				<div class="col-sm-9">
 					<input class="form-control" name="title" type="text" placeholder="Title for Accounting Document">
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">Date :</label>
+				<label class="col-sm-3 control-label">بەروار :</label>
 				<div class="col-sm-9">
 					<input class="form-control" name="record_date" type="date">
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">Description :</label>
+				<label class="col-sm-3 control-label">شرۆڤە :</label>
 				<div class="col-sm-9">
 					<textarea class="form-control" name="description"></textarea>
 				</div>
 			</div>
 			 <div class="col-sm-offset-3 col-sm-5">
-	          <input type="submit"  class="btn btn-primary" value="Submit New Record">
+	          <input type="submit"  class="btn btn-primary" value="پاشکەوت کردن">
 	        </div>
 		</div>
 		<div class="col-md-6" id="notification"></div>
@@ -135,6 +135,10 @@ $(document).ready(function(){
 
 	$("#table_loader").on('click','#delete_items',function(e){
 		$('#table_loader').load(base_url+ 'accounting/delete_record_items');
+		e.preventDefault();
+	});
+	$("#table_loader").on('click','#delete_item',function(e){
+		$('#table_loader').load(base_url+ 'accounting/delete_record_item/'+ $(this).attr('href'));
 		e.preventDefault();
 	});
 	$("#debit").on('change',function(e){

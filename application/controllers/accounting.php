@@ -38,16 +38,16 @@ class Accounting extends CI_Controller {
 	}
 	function submit_record_items(){
 		if ($this->input->post('detail_id')) {
-			$new_item = array(array('group_id'=>$_POST['group_id'], 'ledger_id'=>$_POST['ledger_id'], 'sub_id'=>$_POST['sub_id'], 'detail_id'=>$_POST['detail_id'], 'debit'=>$_POST['debit'],'credit'=>$_POST['credit'],'title'=>$_POST['title'],'item_date'=>$_POST['item_date']));
+			$new_item = array(array('id'=>sha1(rand()) ,'group_id'=>$_POST['group_id'], 'ledger_id'=>$_POST['ledger_id'], 'sub_id'=>$_POST['sub_id'], 'detail_id'=>$_POST['detail_id'], 'debit'=>$_POST['debit'],'credit'=>$_POST['credit'],'title'=>$_POST['title'],'item_date'=>$_POST['item_date']));
 		}
 		else
 		{
-			$new_item = array(array('group_id'=>$_POST['group_id'], 'ledger_id'=>$_POST['ledger_id'], 'sub_id'=>$_POST['sub_id'], 'detail_id'=>'0', 'debit'=>$_POST['debit'],'credit'=>$_POST['credit'],'title'=>$_POST['title'],'item_date'=>$_POST['item_date']));
+			$new_item = array(array('id'=>sha1(rand()) ,'group_id'=>$_POST['group_id'], 'ledger_id'=>$_POST['ledger_id'], 'sub_id'=>$_POST['sub_id'], 'detail_id'=>'0', 'debit'=>$_POST['debit'],'credit'=>$_POST['credit'],'title'=>$_POST['title'],'item_date'=>$_POST['item_date']));
 		}
 		if (isset($_SESSION["record_items"])) {
 			foreach ($_SESSION["record_items"] as $itm) //loop through session array
 				{
-					$items[] = array('group_id'=>$itm['group_id'], 'ledger_id'=>$itm['ledger_id'], 'sub_id'=>$itm['sub_id'], 'detail_id'=>$itm['detail_id'], 'debit'=>$itm['debit'],'credit'=>$itm['credit'],'title'=>$itm['title'],'item_date'=>$itm['item_date']);
+					$items[] = array('id'=>$itm['id'] , 'group_id'=>$itm['group_id'], 'ledger_id'=>$itm['ledger_id'], 'sub_id'=>$itm['sub_id'], 'detail_id'=>$itm['detail_id'], 'debit'=>$itm['debit'],'credit'=>$itm['credit'],'title'=>$itm['title'],'item_date'=>$itm['item_date']);
 				}
 
 				$_SESSION["record_items"] = array_merge($items, $new_item);
@@ -76,7 +76,7 @@ class Accounting extends CI_Controller {
 						'description'=>$this->input->post('description'),
 						'confirm'=>'0',
 						'reg_date'=>date("Y/m/d"),
-						'reg_user'=>$_SESSION['user_id']
+						'user_id'=>$_SESSION['user_id']
 						);
 					$res=$this->accounting_record_model->insert($record_data);
 					if ($res==1) {
@@ -94,8 +94,7 @@ class Accounting extends CI_Controller {
 								'credit'=>$key['credit'],
 								'title'=>$key['title'],
 								'item_date'=>$key['item_date'],
-								'reg_date'=>date("Y/m/d"),
-								'reg_user'=>$_SESSION['user_id']
+								'user_id'=>$_SESSION['user_id']
 								);
 							$res=$this->accounting_record_items_model->insert($item_data);
 							if ($res==1) {
@@ -106,7 +105,7 @@ class Accounting extends CI_Controller {
 							}
 						}
 						unset($_SESSION['record_items']);
-						echo "<div class='alert alert-info'>Accounting Record Created as No#".$record_id." and Success:".$success." and Failure:".$failure." .</div>";
+						echo "<div class='alert alert-info'>Accounting Record Created as No #".$record_id." and Success:".$success." and Failure:".$failure." .</div>";
 					} else{ echo "Error in Submit Record ."; }
 				} else { echo "Debit and Credit amount not equal or is Zero ."; }
 			} else { echo "Please input title for record and choose date for it ."; }
@@ -133,6 +132,18 @@ class Accounting extends CI_Controller {
 	}
 	function delete_record_items(){
 		unset($_SESSION["record_items"]);
+	}
+	function delete_record_item(){
+		if (isset($_SESSION["record_items"])) {
+			foreach ($_SESSION["record_items"] as $itm) //loop through session array
+				{
+					if($itm['id'] != $this->uri->segment(3)){
+					$items[] = array('id'=>$itm['id'] , 'group_id'=>$itm['group_id'], 'ledger_id'=>$itm['ledger_id'], 'sub_id'=>$itm['sub_id'], 'detail_id'=>$itm['detail_id'], 'debit'=>$itm['debit'],'credit'=>$itm['credit'],'title'=>$itm['title'],'item_date'=>$itm['item_date']);
+				} }
+
+				$_SESSION["record_items"] = $items;
+			}
+		redirect('accounting/load_items_table');
 	}
 	function define_accounts(){
 		$this->load->model('group_accounts_model');
@@ -194,7 +205,7 @@ class Accounting extends CI_Controller {
 		$this->load->model('independent_model');
 		$this->load->model('customer_model');
 		$this->load->model('revolving_model');
-		$this->load->model('personnels_model');
+		$this->load->model('personnel_model');
 		$this->load->model('owners_model');
 		$this->load->model('fix_assets_model');
 		$this->load->model('banks_model');
@@ -214,7 +225,7 @@ class Accounting extends CI_Controller {
 		$this->load->model('independent_model');
 		$this->load->model('customer_model');
 		$this->load->model('revolving_model');
-		$this->load->model('personnels_model');
+		$this->load->model('personnel_model');
 		$this->load->model('owners_model');
 		$this->load->model('fix_assets_model');
 		$this->load->model('banks_model');
@@ -270,9 +281,9 @@ class Accounting extends CI_Controller {
 			);
 		if ($this->uri->segment(3) !== false) {
 			$this->ledger_accounts_model->update($new_data,array('id'=>$this->uri->segment(3)));
-			echo "<div class='alert alert-success'>Update Was Successful.</div>";
+			echo "<div class='alert alert-success'>گورانکاری سەرکەوتو بۆ.</div>";
 		} else {
-			echo "<div class='alert alert-danger'>Update Was Failure.</div>";
+			echo "<div class='alert alert-danger'>ئەنجامەکە سەرکەوتۆ نەبو.</div>";
 		}
 	}
 	function edit_sub_manager(){
@@ -293,13 +304,13 @@ class Accounting extends CI_Controller {
 				);
 			if ($count==0) {
 				$this->sub_accounts_model->update($data1,array('id'=>$this->uri->segment(3)));
-				echo "<div class='alert alert-success'>Update Was Successful.</div>";
+				echo "<div class='alert alert-success'>گورانکاری سەرکەوتو بۆ.</div>";
 			} else {
 				$this->sub_accounts_model->update($data2,array('id'=>$this->uri->segment(3)));
-				echo "<div class='alert alert-success'>Update Was Successful.</div>";
+				echo "<div class='alert alert-success'>گورانکاری سەرکەوتو بۆ.</div>";
 			}
 		} else {
-			echo "<div class='alert alert-alert'>Error in received data.</div>";
+			echo "<div class='alert alert-alert'>ئەنجامەکە سەرکەوتۆ نەبو.</div>";
 		}
 	}
 }

@@ -20,7 +20,7 @@ class My_model extends CI_model{
 		$res=$this->db->get_where($this->table,$cond);
 		return $res->result();
 	}
-		function select_row($cond){
+	function select_row($cond){
 		$res=$this->db->get_where($this->table,$cond);
 		return $res->row();
 	}

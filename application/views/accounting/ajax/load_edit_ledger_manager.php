@@ -4,14 +4,14 @@
     ?>
 
    		<div class="form-group">
-		<label class="col-sm-4 control-label">Ledger Title :</label>
+		<label class="col-sm-4 control-label">سەردێری هەژمار :</label>
 		  <div class="col-sm-8">
 		    <input type="text" class="form-control" name="title" value="<?php echo $res->title; ?>">
 		  </div>
 		</div>
 
 		<div class="form-group">
-		<label class="col-sm-4 control-label">Account Nature :</label>
+		<label class="col-sm-4 control-label">جوری هەژمار :</label>
 		  <div class="col-sm-8">
 			<select class="form-control" name="nature">
 				<option value="1" <?php if($res->nature == 1) echo "selected"; ?>>Debit and Credit</option>
@@ -24,6 +24,6 @@
 		</div>
 </div>
 <div class="modal-footer">
-<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-<input type="submit" class="btn btn-primary" value="Save">
+<input type="submit" class="btn btn-primary" value="پاشکەوت کردن">
+<button type="button" class="btn btn-default" data-dismiss="modal">داخستن</button>
 </div>

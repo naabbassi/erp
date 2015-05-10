@@ -31,6 +31,9 @@ class File extends CI_Controller {
 	function welcome(){
 		$this->load->view('welcome');
 	}
+	function error404(){
+		$this->load->view('404');
+	}
 	function backup(){
 		$this->load->dbutil();
 		$config = array(
@@ -41,7 +44,7 @@ class File extends CI_Controller {
 		// Load the download helper and send the file to your desktop
 		$this->load->helper('download');
 		force_download('ERP_BackUp_'.date('Y/m/d').'.zip',$backup);
-		$data['message']='<div class="alert alert-info">BakcUp File was created successfuly</div>';
+		$data['message']='BakcUp File was created successfuly';
 		redirect('file',$data);
 	}
 	function center(){

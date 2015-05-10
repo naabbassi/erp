@@ -216,7 +216,8 @@ class Define extends CI_Controller {
 			$data=array(
 				'cat_id'=>$this->input->post('cat_id'),
 				'title'=>$this->input->post('title'),
-				'unit_scale'=>$this->input->post('scale'),
+				'unit_scale'=>$this->input->post('unit_scale'),
+				'unit_name'=>$this->input->post('unit_name'),
 				'price'=>$this->input->post('price'),
 				'user_id'=>$_SESSION['user_id']
 				);
@@ -247,7 +248,8 @@ class Define extends CI_Controller {
 			$data=array(
 				'cat_id'=>$this->input->post('cat_id'),
 				'title'=>$this->input->post('title'),
-				'unit_scale'=>$this->input->post('scale'),
+				'unit_scale'=>$this->input->post('unit_scale'),
+				'unit_name'=>$this->input->post('unit_name'),
 				'price'=>$this->input->post('price'),
 				'user_id'=>$_SESSION['user_id']
 				);

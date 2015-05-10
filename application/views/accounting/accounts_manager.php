@@ -82,8 +82,8 @@
 						</div>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <input type="submit" class="btn btn-primary" value="Add New Ledger">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">داخستن</button>
+		        <input type="submit" class="btn btn-primary" value="زیاد کردنی هەژماری سەرەکی">
 			       </form>
 		      </div>
 		    </div>
@@ -94,7 +94,7 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">داخستن</span></button>
 		        <h4 class="modal-title" id="myModalLabel">گورانکاری هەژماری سەرەکی</h4>
 		      </div>
 		      <div class="modal-body" >
@@ -109,8 +109,8 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		        <h4 class="modal-title" id="myModalLabel">گەرانکاری ژێر هەژمار</h4>
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">داخستن</span></button>
+		        <h4 class="modal-title" id="myModalLabel">گورانکاری ژێر هەژمار</h4>
 		      </div>
 		      <div class="modal-body" >
 		      	   <form class="form-horizontal" role="form" id="update_sub">
@@ -124,7 +124,7 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">داخستن</span></button>
 		        <h4 class="modal-title" id="myModalLabel">زیادکردی ژێر هەژمار</h4>
 		      </div>
 		      <div class="modal-body">
@@ -136,25 +136,25 @@
 						  </div>
 						</div>
 						<div class="form-group">
-						<label class="col-sm-4 control-label">Detail Type :</label>
+						<label class="col-sm-4 control-label">جوری هەژماری وردە :</label>
 						  <div class="col-sm-8">
 							<select class="form-control" name="detail_kind">
-								<option value="0">None</option>
-								<option value="1">Independent List</option>
-								<option value="2">Customers</option>
-								<option value="3">Revolving Funds</option>
-								<option value="4">Employes</option>
-								<option value="5">Owners</option>
-								<option value="6">Equipments</option>
-								<option value="7">Bank Accounts</option>
-								<option value="8">General List</option>
+								<option value="0">هیچ</option>
+								<option value="1">هەژماری سەربەخۆ</option>
+								<option value="2">موشتەرێکان</option>
+								<option value="3">کاسی مەسروفات</option>
+								<option value="4">کارمەندان</option>
+								<option value="5">خاوەنەکان</option>
+								<option value="6">کەل و پەل</option>
+								<option value="7">هەژمارە بانکێکان</option>
+								<option value="8">هەژمارە گشتیەکان</option>
 							</select>
 						  </div>
 						</div>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <input type="submit" class="btn btn-primary" value="Add New Ledger">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">داخستن</button>
+		        <input type="submit" class="btn btn-primary" value="زیاد کردن">
 			       </form>
 		      </div>
 		    </div>

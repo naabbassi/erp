@@ -9,7 +9,7 @@
 		?>
     <h3 class="text-center text-info">گەرانەوەی فروش</h3><hr>
 <div class="col-md-7" id="invoice_content">
-    <div class="col-md-12"> 
+    <div class="col-md-12" id="form"> 
 
      <?php echo form_open('operation/sale_back_save',array('class'=>'form-horizontal','id'=>'sales')) ?>
       <div class="form-group">
@@ -42,7 +42,7 @@
       <div class="form-group">
         <label  class="col-sm-4 control-label">هەژمار :</label>
         <div class="col-sm-8">
-          <input type="number" class="form-control"  name="title" required>
+          <input type="number" class="form-control"  name="quantity" required>
         </div>
       </div>
       <div class="form-group">
@@ -66,24 +66,36 @@
     <?php echo form_close(); ?>
     </div>
   </div>
-<div class="col-md-5"><?php if(isset($message)) echo $message; ?></div>
+<div class="col-md-5" id="notify"><?php if(isset($message)) echo $message; ?></div>
 <div class="clearfix"></div>
 <hr><h3 class="text-center text-warning">ریزی گەرانەوە لە فروشەکان</h3><hr>
 <div class="col-md-12">
-  <table class="table">
+  <table class="table" id="table">
     <thead>
       <th>فاکتور</th>
       <th>موشتەری</th>
+      <th>کالا</th>
+      <th>هەژمار</th>
+      <th>یەکە</th>
       <th>رێکەوت</th>
+      <th>کارگێری</th>
     </thead>
     <?php
     $sale_back=$this->sale_back_model->all();
-    foreach ($sale_back as $item) { ?>
+    foreach ($sale_back as $item) { 
+      $sale=$this->sale_model->findbyid($item->sale_id);
+      $customer=$this->customer_model->findbyid($sale->customer_id);
+      $product=$this->product_model->findbyid($item->product_id);
+      $unit=$this->unit_model->select_row(array('id'=>$item->unit_id,'product_id'=>$item->product_id));
+      ?>
       <tr>
-        <td><?php echo $item->sale_id; ?></td>
-        <td><?php echo $item->product_id; ?></td>
+        <?php echo "<td>$sale->id - $sale->date_time</td>"; ?>
+        <?php echo "<td>$customer->f_name $customer->m_name $customer->l_name</td>"; ?>
+        <td><?php echo $product->title; ?></td>
+        <td><?php echo $item->quantity; ?></td>
+        <td><?php echo $unit->title; ?></td>
         <td><?php echo $item->date_time; ?></td>
-
+         <td><a href="<?php echo $item->id; ?>" id="edit">گوڕانکاری</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $item->id; ?>" id="delete">ڕەش کردنەوە</a></td>
       </tr>
     <?php } ?>
   </table>
@@ -135,6 +147,42 @@
         }
       });
       });
+     $('#table').on('click','#delete',function(e) {
+      var object = $(this);
+    if (confirm('ئایا دڵنیای لە ڕەش کردنەوە ؟')) {
+      delete_id = $(this).attr('href');
+    $.ajax({
+      url:base_url + 'operation/delete_sale_back/' + delete_id ,
+      type:'POST',
+    success:function(data){
+      console.log(data);
+      $('#notify').html(data).show();
+      var td=object.parent();
+      var tr=td.parent();
+      tr.fadeOut(2000).remove();
+      },
+    error:function(data){
+      console.log(data);
+      $('#notify').html(data).show().fadeOut(5000);
+      }
+    }); }
+    e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
+    });
+  /* Edit Bank Account */
+$('#table').on('click','#edit',function(e) {
+      edit_id = $(this).attr('href');
+    $.ajax({
+      url:base_url + 'operation/edit_sale_back/' + edit_id ,
+      type:'POST',
+    success:function(data){
+      $('#form').html(data);
+      },
+    error:function(data){
+      $('#notify').html(data).show().fadeOut(5000);
+      }
+    }); 
+    e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
+    });
 	});
 </script>
 </body>

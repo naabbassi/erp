@@ -58,19 +58,35 @@
                   <li><?= anchor('operation/payment','وەرگرتنی پارە') ?></a></li>
                 </ul>
               </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">هەژمارەکان<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><?= anchor('accounts/general','هەژمارە گشتیەکان') ?></a></li>
+                  <li><?= anchor('accounts/independent','هەژمارە سەربەخۆکان') ?></a></li>
+                  <li><?= anchor('accounts/fix_assets','دارایی ثبتەکان') ?></a></li>
+                  <li><?= anchor('accounts/stock_holders','خاوەن پشکەکان') ?></a></li>
+                </ul>
+              </li> 
                <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">ژمێریاری<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                   <li><?= anchor('accounting/accounts_manager','هەژمارەکان') ?></a></li>
                    <li class="divider"></li>
-                  <li><?= anchor('accounting/accounting_record','پاشکەوت کردنی بەڵگە') ?></a></li>
+                  <li><?= anchor('accounting/new_record','تومارکردنی بەڵگە') ?></a></li>
                    <li class="divider"></li>
+                  <li><?= anchor('accounting/records_list','ریزی بەڵگەکانی ژمێریاری') ?></a></li>
                 </ul>
               </li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">ڕاپۆرت<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">راپورت <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><?= anchor('reports/product_summary','گوژمەی کاڵا') ?></a></li>
+                  <li><?= anchor('reports/trial_balancesheet','Trial Balancesheet') ?></a></li>
+                  <li class="divider"></li>
+                  <li><?= anchor('reports/accounts_report','Accounts Report') ?></li>
+                  <li class="divider"></li>
+                  <li><?= anchor('reports/products_report','راپورتی کالاکان') ?></li>
+                  <li class="divider"></li>
+                  <li><?= anchor('reports/inventory_report','Storage Inventory') ?></li>
                 </ul>
               </li>
             </ul>

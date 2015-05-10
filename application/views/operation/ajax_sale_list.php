@@ -9,7 +9,6 @@
 	 		<thead >
 	 			<th class="text-center">#</th>
 	 			<th class="text-center">I.ID</th>
-	 			<th class="text-center">سەردێر</th>
 	 			<th class="text-center">موشتەری</th>
 	 			<th class="text-center">رێکەوت</th>
 	 			<th class="text-center">بڕی پارە</th>
@@ -33,24 +32,17 @@
 	 			<tr>
 	 				<td class="text-center "><small><?php echo $no; ?></small></td>
 	 				<td class="text-center info"><small><?php echo $key->id; ?></small></td>
-	 				<td class="text-center"><small><?php echo substr($key->title,0,35).'...'; ?></small></td>
 	 				<td class="text-center text-info"><small><?php $cas=$this->customer_model->select_row(array('id'=>$key->customer_id)); echo $cas->f_name.' '.$cas->m_name;  ?></small></td>
 	 				<td class="text-info text-center"><small><?php echo $key->date_time; ?></small></td>
-	 				<?php $sum=$this->sale_details_model->multiple('quantity','price',array('sale_id'=>$key->id)); ?>
-	 				<?php 
-	 				$pay_count=$this->payment_model->count(array('sale_id'=>$key->id));
-	 				if ($pay_count > 0) {
-	 					$payment=$this->payment_model->select_row(array('sale_id'=>$key->id));
-	 					$payment_amount=$payment->amount;
-	 					} else {
-	 						$payment_amount= '0';
-	 					} ?>
+	 				<?php $sum=$this->sale_details_model->multiple('quantity','price',array('sale_id'=>$key->id)); 
+	 					  $payment_amount=$this->payment_model->sum('amount',array('sale_id'=>$key->id))->amount;
+	 				?>
 	 				<td class="text-primary text-center"><?php echo number_format($sum); ?> $</td>
 	 				<td class="text-info text-center"><?php echo number_format($key->discount); ?> $</td>
 	 				<td class="text-success text-center"><?php echo number_format($payment_amount); ?> $</td>
-	 				<td class="text-danger text-center"><?php echo number_format($sum-$key->discount-$payment_amount); ?> $</td>
+	 				<td class="text-danger text-center"><?php echo number_format($sum - $key->discount-$payment_amount); ?> $</td>
 	 				<td class="text-center warning operation"><small>
-	 					<a href="<?php echo $key->id; ?>" value="<?php echo $key->title; ?>" id="edit">گۆڕانکاری</a> &nbsp;&nbsp;&nbsp;
+	 					<a href="edit_sale/<?php echo $key->id; ?>" value="<?php echo $key->title; ?>" id="edit">گۆڕانکاری</a> &nbsp;&nbsp;&nbsp;
 	 					<?php 	$atts = array(
 			              'width'      => '1000',
 			              'height'     => '650',
@@ -71,7 +63,7 @@
 	 		$debet=$debet + (($sum)-($key->discount)-$payment_amount);
 	 		 } ?>
 	 		 	 			<tr>
-	 				<td colspan="5" class="text-center"> کۆی گشتی : </td>
+	 				<td colspan="4" class="text-center"> کۆی گشتی : </td>
 	 				<td class="success text-info text-center" ><small><?php echo number_format($total,2)  ?> $</small></td>
 	 				<td class="info text-info text-center" ><small><?php echo number_format($discount,2)  ?> $</small></td>
 	 				<td class="success text-info text-center" ><small><?php echo number_format($paid,2)  ?> $</small></td>

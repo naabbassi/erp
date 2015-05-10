@@ -1,14 +1,14 @@
 <?php
 if (isset($_SESSION['record_items'])) { ?>
-  <a href="dsfv" id="delete_items" class="text-info">Delete All Items</a>
+  <a href="dsfv" id="delete_items" class="text-info">رەشکردنەوەی گشتی</a>
   <table class="table table-bordered table-hover table-striped">
   <thead>
     <th class="text-center">No</th>
-    <th class="text-center">Description</th>
-    <th class="text-center">Group</th>
-    <th class="text-center">Ledger</th>
-    <th class="text-center">Subsidiary</th>
-    <th class="text-center">Detailed</th>
+    <th class="text-center">شروڤە</th>
+    <th class="text-center">گروپ</th>
+    <th class="text-center">هەژمار سەرەکی</th>
+    <th class="text-center">ژێر هەژمار</th>
+    <th class="text-center">وردە هەژمار</th>
     <th class="text-center">Debit</th>
     <th class="text-center">Credit</th>
   </thead>
@@ -29,6 +29,7 @@ if (isset($_SESSION['record_items'])) { ?>
   	echo "<td class='text-center'>". $this->details->get_title($key['sub_id'],$key['detail_id'])."</td>";
   	echo "<td class='text-center text-primary'>".number_format($key['debit'],2)." $</td>";
     echo "<td class='text-center text-success'>".number_format($key['credit'],2)." $</td>";
+    echo "<td class='text-center text-success'><a href='$key[id]' id='delete_item'>X</a></td>";
   	echo "<tr>";
   	$no++;
   	$debit=$debit + $key['debit'];

@@ -4,7 +4,7 @@ if ($this->uri->segment(3)!==false & $this->uri->segment(3) > 0) {
 	$value=$sub->detail_kind;
 	switch ($value) {
 		case '0':
-			echo "<div class='alert alert-info'>not defined any detailed account for this subsaidiary account.</div>";
+			echo "<div class='alert alert-info'>هیچ وردە هەژمارێک تومار نەکراوە.</div>";
 			break;
 		case '1':
 			 $res=$this->independent_model->select(array('sub_id'=>$this->uri->segment(3)));

@@ -73,7 +73,7 @@
   <div class="tab-pane" id="payment">
     <br>
     <div class="col-md-6"> 
-     <?php echo form_open('operation/payment',array('class'=>'form-horizontal','id'=>'payment_form')) ?>
+     <?php echo form_open('operation/ajax_payment',array('class'=>'form-horizontal','id'=>'payment_form')) ?>
       <div class="form-group">
         <label  class="col-sm-4 control-label">شێواز :</label>
         <div class="col-sm-8">
@@ -251,7 +251,7 @@
     data:$(this).serialize(),
     type:'POST',
     success:function(data){
-    $('#payment_table').load(base_url + 'operation/load_payment_table');
+    $('#payment_table').load(base_url + 'operation/load_ajax_payment_table');
     },
     error:function(data){
     }
@@ -300,12 +300,12 @@
      $('body').on('click','#payment_delete',function(e){
         if (confirm('ئایا دڵنیای لە ڕەش کردنەوە ؟')) {
       $.ajax({
-        url:base_url + 'operation/payment_delete/',
+        url:base_url + 'operation/ajax_payment_delete/',
         data:$(this).serialize(),
         type:'POST',
         success:function(data){
           console.log(data);
-          $('#payment_table').load(base_url + 'operation/load_payment_table');
+          $('#payment_table').load(base_url + 'operation/load_ajax_payment_table');
         },
         error:function(data){
           console.log(data);

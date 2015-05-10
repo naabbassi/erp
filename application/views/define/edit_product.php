@@ -23,7 +23,13 @@
   <div class="form-group">
     <label class="col-sm-4 control-label">قیاسی یەکە :</label>
     <div class="col-sm-8">
-      <input class="form-control" type="number" name="scale" value="<?php echo $data->unit_scale ?>" required>
+      <input class="form-control" type="number" name="unit_scale" value="<?php echo $data->unit_scale ?>" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-4 control-label">نێوی یەکە :</label>
+    <div class="col-sm-8">
+      <input class="form-control" type="text" name="unit_name" value="<?php echo $data->unit_name ?>" required>
     </div>
   </div>
   <div class="form-group">

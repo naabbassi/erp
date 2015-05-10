@@ -1,0 +1,93 @@
+	@font-face {
+	font-family: 'eras-regular';
+	src: url('../fonts/eras_regular.ttf');
+	font-weight: bold;
+	}
+	@font-face {
+	font-family: 'eras-bold';
+	src: url('../fonts/eras_bold.ttf');
+	font-weight: bold;
+	}
+	@font-face {
+	font-family: 'eras-light';
+	src: url('../fonts/eras_light.ttf');
+	font-weight: bold;
+	}
+	*{
+		direction:rtl;
+		padding:0;
+		margin: 0;
+		font-family:'eras-regular';
+		font-size-adjust: 0.5 !important;
+		letter-spacing:0.5px;
+		font-size:15px;
+	}
+	.container{
+		width:980px;
+		margin:0 auto;
+		text-align:center;
+		position: relative;
+		text-align:center;
+		overflow:hidden;
+	}
+	h2{
+		line-height:50px;
+		font-size:34px;
+	}
+	.bold{
+		font-family:'eras-bold' !important;
+	}
+	.text-right{
+		text-align:right;
+		padding-right:10px !important;
+	}
+	.text-left{
+		text-align:left;
+		padding-left:10px !important;
+	}
+	.left_content{
+		width:45%;
+		float:left;
+	}
+	.right_content{
+		width:30%;
+		float:right;
+	}
+	hr{
+		height:0;
+		margin:10px 0 10px -10px;
+		border-top:1px solid #3399cc;
+	}
+	table{
+		width:100%;
+		border-collapse:collapse;
+		border:1px solid #3399cc;	
+	}
+	thead{
+		background:#3399cc;
+		border: 1px solid #3399cc;
+	}
+	th{
+		color:#fff;
+		height:45px;
+		border-right:1px solid #fff;
+	}
+	th:first-child{
+		border:none;
+	}
+	td{
+		border: 1px solid #3399cc;
+		text-align:center;
+		padding:2px;
+	}
+	tr{
+		height:35px;
+	}
+	tr:nth-child(even) td{
+		background-color:#ededed;
+	}
+	@media print {
+    .navbar {
+display:none;
+    }
+    }

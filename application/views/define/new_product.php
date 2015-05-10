@@ -30,9 +30,15 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-4 control-label">قیاسی یەکە :</label>
+    <label class="col-sm-4 control-label">یەکەی ریپورت :</label>
     <div class="col-sm-8">
-      <input class="form-control" type="text" name="scale" placeholder="قیاسی یەکەی" required>
+      <input class="form-control" type="number" name="unit_scale" placeholder="قیاسی یەکەی" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-4 control-label">نێوی یەکە :</label>
+    <div class="col-sm-8">
+      <input class="form-control" type="text" name="unit_name" placeholder="قیاسی یەکەی" required>
     </div>
   </div>
   <div class="form-group">
