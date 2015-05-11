@@ -145,7 +145,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label  class="col-sm-4 control-label">یەکە :</label>
+        <label  class="col-sm-4 control-label">کاڵا :</label>
         <div class="col-sm-8" id="product_loader">
         <select class="form-control" required></select>
         </div>

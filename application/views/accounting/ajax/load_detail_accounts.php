@@ -26,7 +26,7 @@ if ($this->uri->segment(3)!==false & $this->uri->segment(3) > 0) {
 				<option></option>
 				<?php $res=$this->customer_model->all();
 				foreach ($res as $key) {
-					echo "<option value='".$key->id."' >".$key->invoice_title."</option>";
+					echo "<option value='".$key->id."' >".$key->f_name."</option>";
 				}
 				 ?>
 			</select>

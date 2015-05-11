@@ -123,9 +123,9 @@
 			 <div class="col-sm-offset-3 col-sm-5">
 	          <input type="submit"  class="btn btn-primary" value="پاشکەوت کردن">
 	        </div>
+  		<?php echo form_close() ?>
 		</div>
 		<div class="col-md-6" id="notification"></div>
-  	</form>
   </div>
 </div>
 </div>
@@ -220,23 +220,23 @@ $(document).ready(function(){
       e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
     });
     $('#record_form').on('submit',function(e) {
-      $('#record_item button').addClass('disabled');
-      $('#record_item button').text('Proccessing ...');
+      $('#record_form button').addClass('disabled');
+      $('#record_form button').text('Proccessing ...');
       $.ajax({
       url:base_url + $(this).attr("action"),
       data:$(this).serialize(),
       type:'POST',
       success:function(data){
 	      console.log(data);
-	      $('#record_item button').removeClass('disabled');
-	      $('#record_item button').text('Submit New Record');
-	      $('#record_item input[type=text],#record_item textarea,#record_item input[type=date]').val('');
+	      $('#record_form button').removeClass('disabled');
+	      $('#record_form button').text('Submit New record_form');
+	      $('#record_form input[type=text],#record_form textarea,#record_form input[type=date]').val('');
 	      $('#notification').html(data);
       },
       error:function(data){
           console.log(data);
-          $('#record_item button').removeClass('disabled');
-          $('#record_item button').text('Add Item To Record');
+          $('#record_form button').removeClass('disabled');
+          $('#record_form button').text('Add Item To Record');
           $('#notification').html(data);
       }
       });

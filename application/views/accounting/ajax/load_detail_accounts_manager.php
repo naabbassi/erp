@@ -15,7 +15,7 @@ if ($this->uri->segment(3)!==false & $this->uri->segment(3) > 0) {
 		case '2':
 			$res=$this->customer_model->all();
 			foreach ($res as $key) { ?>
-				 <button type="button" class="btn btn-success  btn-sm " ><?php echo $key->invoice_title ?></button>
+				 <button type="button" class="btn btn-success  btn-sm " ><?php echo $key->f_name.' '.$key->m_name ?></button>
 			<?php }
 			break;
 		case '3':

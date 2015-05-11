@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Products Report</title>
+	<title>راپورتی گوژمەی کالاکان</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>asset/css/trial_balance.css">
 	<style type="text/css">
 		p{
@@ -18,6 +18,7 @@
 </head>
 <body>
 	<div class="container">
+	<br/>
 			<table>
 				<thead>
 					<th>#</th>

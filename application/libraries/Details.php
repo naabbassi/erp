@@ -22,7 +22,7 @@
  				case '2':
  				 	$CI->load->model('customer_model'); 
  					$res=$CI->customer_model->findbyid($detail_id);
- 					return $res->invoice_title;
+ 					return $res->f_name.' '.$res->m_name;
  					break;
  				case '3':
  					$CI->load->model('revolving_model'); 
