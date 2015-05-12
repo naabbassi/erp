@@ -1,24 +1,25 @@
 <html>
 <head>
-	<title>Trial Balance Sheet</title>
+<meta charset="utf-8">
+	<title>گوژمەی هەژمارەکان</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>asset/css/trial_balance.css">
 </head>
 <body>
 	<div class="container">
-		<h2> Trial Balance Sheet</h2>
+		<h2>گوژمەی هەژمارەکان</h2>
 		<br>
 <table>
 	<tr>
-		<td rowspan="2" style="max-width:10px;">ID</td>
-		<td rowspan="2" style="min-width:150px;">Title</td>
-		<td colspan="2">Unadjusted</td>
-		<td colspan="2">Balances</td>
+		<td rowspan="2" style="max-width:10px;">ژمارە</td>
+		<td rowspan="2" style="min-width:150px;">سەردێر</td>
+		<td colspan="2">سەرەتایی</td>
+		<td colspan="2">کۆ</td>
 	</tr>	
 	<tr>
-		<td>Debit</td>
-		<td>Credit</td>
-		<td>Debit</td>
-		<td>Credit</td>
+		<td>قەرزدار</td>
+		<td>قەرزدەری</td>
+		<td>قەرزدار</td>
+		<td>قەرزدەری</td>
 	</tr>
 	<?php
 	$Balance_Total_Debit=0;
@@ -27,7 +28,7 @@
 	<!-- Current Assets -->
 	<tr>
 		<td class="bold">1</td>
-		<td class="text-left bold">Current Assets :</td>
+		<td class="text-left bold">دارایی هەنوکەیی :</td>
 	</tr>
 		<?php
 			$ledgers=$this->ledger_accounts_model->select(array('group_id'=>1));
@@ -61,7 +62,7 @@
 	<!-- Fix Assets -->
 	<tr>
 		<td class="bold">2</td>
-		<td class="text-left bold">Fix Assets :</td>
+		<td class="text-left bold">دارایی درێژخایەن :</td>
 	</tr><?php 
 			$ledgers=$this->ledger_accounts_model->select(array('group_id'=>2));
 			foreach ($ledgers as $key) {
@@ -94,7 +95,7 @@
 	<!-- Current Liabilities -->
 	<tr>
 		<td class="bold">3</td>
-		<td class="text-left bold">Current Liabilities :</td>
+		<td class="text-left bold">قەرزی هەنوکەیی :</td>
 	</tr><?php 
 			$ledgers=$this->ledger_accounts_model->select(array('group_id'=>3));
 			foreach ($ledgers as $key) {
@@ -127,7 +128,7 @@
 	<!-- Long Term Liabilities -->
 	<tr>
 		<td class="bold">4</td>
-		<td class="text-left bold">Long Term Liabilities :</td>
+		<td class="text-left bold">قەرزی درێژ درێژخایەن :</td>
 	</tr><?php 
 			$ledgers=$this->ledger_accounts_model->select(array('group_id'=>4));
 			foreach ($ledgers as $key) {
@@ -160,7 +161,7 @@
 	<!-- Owner's Equity -->
 	<tr>
 		<td class="bold">5</td>
-		<td class="text-left bold">Owner's Equity :</td>
+		<td class="text-left bold">سرمایەی خاوەن پشکەکان :</td>
 	</tr><?php 
 			$ledgers=$this->ledger_accounts_model->select(array('group_id'=>5));
 			foreach ($ledgers as $key) {
@@ -193,7 +194,7 @@
 	<!-- Revenue -->
 	<tr>
 		<td class="bold">6</td>
-		<td class="text-left bold">Revenue :</td>
+		<td class="text-left bold">داهات :</td>
 	</tr><?php 
 			$ledgers=$this->ledger_accounts_model->select(array('group_id'=>6));
 			foreach ($ledgers as $key) {
@@ -226,7 +227,7 @@
 	<!-- Expenses -->
 	<tr>
 		<td class="bold">7</td>
-		<td class="text-left bold">Expenses :</td>
+		<td class="text-left bold">مسروفات :</td>
 	</tr><?php 
 			$ledgers=$this->ledger_accounts_model->select(array('group_id'=>7));
 			foreach ($ledgers as $key) {
@@ -259,7 +260,7 @@
 	<!-- Cost Accounts -->
 	<tr>
 		<td class="bold">8</td>
-		<td class="text-left bold">Cost Accounts :</td>
+		<td class="text-left bold">هەژمارە مسروفاتێکان :</td>
 	</tr><?php 
 			$ledgers=$this->ledger_accounts_model->select(array('group_id'=>8));
 			foreach ($ledgers as $key) {
@@ -292,7 +293,7 @@
 	<!-- Disciplinary Accounts -->
 	<tr>
 		<td class="bold">9</td>
-		<td class="text-left bold">Disciplinary Accounts :</td>
+		<td class="text-left bold">هەژماری کونترولی :</td>
 	</tr><?php 
 			$ledgers=$this->ledger_accounts_model->select(array('group_id'=>9));
 			foreach ($ledgers as $key) {
@@ -321,7 +322,7 @@
 			<?php }
 		 ?>
 		 <tr>
-		 	<td class="bold" colspan="2">Total Balance :</td>
+		 	<td class="bold" colspan="2">کۆی گشتی :</td>
 		 	<?php
 		 		$sum_debit=$this->accounting_record_items_model->sum('debit',array())->debit;
 		 		$sum_credit=$this->accounting_record_items_model->sum('credit',array())->credit;

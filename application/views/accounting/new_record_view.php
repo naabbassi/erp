@@ -105,13 +105,13 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">سەردێر :</label>
 				<div class="col-sm-9">
-					<input class="form-control" name="title" type="text" placeholder="Title for Accounting Document">
+					<input class="form-control" name="title" type="text" placeholder="Title for Accounting Document" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">بەروار :</label>
 				<div class="col-sm-9">
-					<input class="form-control" name="record_date" type="date">
+					<input class="form-control" name="record_date" type="date" required>
 				</div>
 			</div>
 			<div class="form-group">
@@ -121,7 +121,7 @@
 				</div>
 			</div>
 			 <div class="col-sm-offset-3 col-sm-5">
-	          <input type="submit"  class="btn btn-primary" value="پاشکەوت کردن">
+	          <button type="submit"  class="btn btn-primary">پاشکەوت کردن</button>
 	        </div>
   		<?php echo form_close() ?>
 		</div>
@@ -221,22 +221,22 @@ $(document).ready(function(){
     });
     $('#record_form').on('submit',function(e) {
       $('#record_form button').addClass('disabled');
-      $('#record_form button').text('Proccessing ...');
+      $('#record_form button').text('ناردن ...');
       $.ajax({
-      url:base_url + $(this).attr("action"),
+      url:$(this).attr("action"),
       data:$(this).serialize(),
       type:'POST',
       success:function(data){
 	      console.log(data);
 	      $('#record_form button').removeClass('disabled');
-	      $('#record_form button').text('Submit New record_form');
+	      $('#record_form button').text('پاشکەوت کردن');
 	      $('#record_form input[type=text],#record_form textarea,#record_form input[type=date]').val('');
 	      $('#notification').html(data);
       },
       error:function(data){
           console.log(data);
           $('#record_form button').removeClass('disabled');
-          $('#record_form button').text('Add Item To Record');
+          $('#record_form button').text('پاشکەوت کردن');
           $('#notification').html(data);
       }
       });

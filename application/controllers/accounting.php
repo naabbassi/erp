@@ -105,11 +105,11 @@ class Accounting extends CI_Controller {
 							}
 						}
 						unset($_SESSION['record_items']);
-						echo "<div class='alert alert-info'>Accounting Record Created as No #".$record_id." and Success:".$success." and Failure:".$failure." .</div>";
-					} else{ echo "Error in Submit Record ."; }
-				} else { echo "Debit and Credit amount not equal or is Zero ."; }
-			} else { echo "Please input title for record and choose date for it ."; }
-		} else { echo "Not Added rows for this record. please add your rows and try submit record . "; }
+						echo "<div class='alert alert-info'>بەڵگەی ژمێریاری پاشکەوت کرا ژمارە #".$record_id." و سەرکەوتو:".$success." و ناسەرکەوتو:".$failure." .</div>";
+					} else{ echo "<div class='alert alert-danger'>هەلە لە پاشکەوت کردن دا روی داوە.</div>"; }
+				} else { echo "<div class='alert alert-danger'>بری پارەی قەرزداری ق قەرزدەری بەرامبەر نێ .</div>"; }
+			} else { echo "<div class='alert alert-danger'>سەردێر و رێکەورت نەناردراوە.</div>"; }
+		} else { echo "<div class='alert alert-danger'>هیچ ئایتێمەک بو ئەم بەڵگەیە دابین نەکراوە </div>"; }
 	}
 	function load_items_table(){
 		$this->load->model('group_accounts_model');

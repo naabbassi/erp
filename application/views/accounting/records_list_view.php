@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Accounting Records List</title>
+  <title>ریزی بەڵگەکانی ژمێریاری</title>
 </head>
 <body>
 <div class="container">
@@ -43,7 +43,7 @@
     echo "<td class='text-center'>$user->f_name $user->m_name</td>";
     echo "<td class='text-center info'>".number_format($total_debit->debit,2)." $</td>";
     echo "<td class='text-center success'>".number_format($total_credit->credit,2)." $</td>"; 
-    echo "<td class='text-center'>".anchor_popup('reports/accounting_record_report/'.$key->id,'کردنەوە',$atts).'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.anchor_popup('accouning/record_edit/'.$key->id,'گورانکاری',$atts)."</td>";
+    echo "<td class='text-center'>".anchor_popup('reports/accounting_record_report/'.$key->id,'کردنەوە',$atts).'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.anchor('accouning/record_edit/'.$key->id,'گورانکاری',$atts)."</td>";
     echo "<tr>";
     $no++;
     $debit=$debit + $total_debit->debit;

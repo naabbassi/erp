@@ -217,7 +217,7 @@ $('#items').on('click','#new_item',function(e){
 			$('#edit_modal').modal("show");
 			e.preventDefault();
   });
-  $("body").on('change', '#cat' ,function(){
+  $("#edit_modal").on('change', '#cat' ,function(){
       $.ajax({
         url:base_url + 'operation/load_product/' + $(this).val(),
         success:function(data){
@@ -229,7 +229,30 @@ $('#items').on('click','#new_item',function(e){
         }
       });
       });
-     $("body").on('change', '#product' ,function(){
+  $("#edit_modal").on('change', '#product' ,function(){
+      $.ajax({
+        url:base_url + 'operation/load_units/' + $(this).val(),
+        success:function(data){
+          $('#unit_loader').html(data);
+        },
+        error:function(data){
+          $('#unit_loader').html(data);
+        }
+      });
+      });
+  $("#new_modal").on('change', '#cat' ,function(){
+      $.ajax({
+        url:base_url + 'operation/load_product/' + $(this).val(),
+        success:function(data){
+          $('#product_loader').html(data);
+          $('#unit_loader').load(base_url + 'operation/load_units/0');
+        },
+        error:function(data){
+          $('#product_loader').html(data);
+        }
+      });
+      });
+  $("#new_modal").on('change', '#product' ,function(){
       $.ajax({
         url:base_url + 'operation/load_units/' + $(this).val(),
         success:function(data){

@@ -86,7 +86,7 @@
       <td><?php echo $key->phone; ?></td>
       <td><?php echo $key->address; ?></td>
       <td><?php echo $key->suporter; ?></td>
-      <td><a href="<?php echo $key->id; ?>" id="edit">گوڕانکاری</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $key->id; ?>" id="delete">ڕەش کردنەوە</a></td>
+      <td><a href="<?php echo $key->id; ?>" id="edit">گوڕانکاری</a> | <a href="<?php echo $key->id; ?>" id="delete">ڕەش کردنەوە</a> | <?= anchor('reports/customer_report/'.$key->id,'ریپورت'); ?></td></td>
     </tr>
   <?php
   $no++;

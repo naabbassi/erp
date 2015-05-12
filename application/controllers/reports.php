@@ -108,5 +108,15 @@ class Reports extends CI_Controller {
 		$this->load->model('storage_output_model');
 		$this->load->view('reports/inventory_report');
 	}
+	function customer_report(){
+		$this->load->model('customer_product_view_model');
+		$this->load->model('payment_model');
+		$this->load->model('sale_details_model');
+		$this->load->model('purchase_details_model');
+		$this->load->model('customer_model');
+		$this->load->model('product_model');
+		$this->load->model('unit_model');
+		$this->load->view('reports/customer_report');
+	}
 }
 
