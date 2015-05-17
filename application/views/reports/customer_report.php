@@ -46,8 +46,10 @@
 		<tr>
 			<td><?php echo $product->id; ?></td>
 			<td><?php echo $product->title; ?></td>
-			<td>هر <?php echo $product->unit_name ?> = <?php echo $product->unit_scale; ?></td>
-			<td><?php  echo number_format(($sale_count/$product->unit_scale),2); ?> <?php echo $product->unit_name ?></td>
+			<td>هر <?php echo $product->unit_name ?> = <?php echo $product->unit_scale.' '.$product->component_name; ?></td>
+			<?php $floor=floor($sale_count/$product->unit_scale); ?>
+			<?php $component=($sale_count)-($floor*$product->unit_scale); ?>
+			<td><?php  echo number_format($floor); ?> <?php echo $product->unit_name ?> و <?php echo $component.' '.$product->component_name;  ?></td>
 		</tr>
 	
 			<?php } ?>
@@ -69,14 +71,14 @@
 					echo "<td>$key->id</td>";
 					echo "<td>$key->type</td>";
 					echo "<td>$key->date_time</td>";
-					echo "<td>".number_format($key->amount,2)."</td>";
+					echo "<td>".number_format($key->amount)." دینار</td>";
 					echo "</tr>";
 					$sum=$sum +$key->amount;
 				}
 			?>
 			<tr>
 				<td colspan="3" >کۆی گشتی :</td>
-				<td style="background:#3399cc;color:white;"><?php echo number_format($sum,2); ?></td>
+				<td style="background:#3399cc;color:white;"><?php echo number_format($sum); ?> دینار</td>
 			</tr>
 			</table>
 	</div>

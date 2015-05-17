@@ -290,7 +290,7 @@ class Operation extends CI_Controller {
 		} else {
 			$this->session->set_flashdata('new_payment' , "<div class='alert alert-danger'>operation was not successfuly</div>");
 		}
-		$this->load->view('operation/new_payment',$result);
+		$this->load->view('operation/new_payment');
 		}
 	}
 	function delete_payment(){

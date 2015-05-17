@@ -218,6 +218,7 @@ class Define extends CI_Controller {
 				'title'=>$this->input->post('title'),
 				'unit_scale'=>$this->input->post('unit_scale'),
 				'unit_name'=>$this->input->post('unit_name'),
+				'component_name'=>$this->input->post('component_name'),
 				'price'=>$this->input->post('price'),
 				'user_id'=>$_SESSION['user_id']
 				);
@@ -250,6 +251,7 @@ class Define extends CI_Controller {
 				'title'=>$this->input->post('title'),
 				'unit_scale'=>$this->input->post('unit_scale'),
 				'unit_name'=>$this->input->post('unit_name'),
+				'component_name'=>$this->input->post('component_name'),
 				'price'=>$this->input->post('price'),
 				'user_id'=>$_SESSION['user_id']
 				);

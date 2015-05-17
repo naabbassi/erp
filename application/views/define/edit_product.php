@@ -33,6 +33,12 @@
     </div>
   </div>
   <div class="form-group">
+    <label class="col-sm-4 control-label">نێوی یەکەی ورد :</label>
+    <div class="col-sm-8">
+      <input class="form-control" type="text" name="component_name" value="<?php echo $data->component_name ?>" required>
+    </div>
+  </div>
+  <div class="form-group">
     <label class="col-sm-4 control-label">نرخ :</label>
     <div class="col-sm-8">
       <input class="form-control" type="number" name="price" value="<?php echo $data->price ?>" required>

@@ -42,6 +42,12 @@
     </div>
   </div>
   <div class="form-group">
+    <label class="col-sm-4 control-label">نێوی یەکەی ورد :</label>
+    <div class="col-sm-8">
+      <input class="form-control" type="text" name="component_name" placeholder="یەکەی ورد" required>
+    </div>
+  </div>
+  <div class="form-group">
     <label class="col-sm-4 control-label">نرخ :</label>
     <div class="col-sm-8">
       <input class="form-control" type="text" name="price" placeholder="نرخ" required>

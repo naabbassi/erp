@@ -83,9 +83,11 @@
 </thead>
 <?php 
   $no=1;
+  $total=0;
   $res=$this->payment_model->all();
   foreach ($res as $key) {
     $customer=$this->customer_model->findbyid($key->customer_id);
+    $total=$total+$key->amount;
    ?>
     <tr>
       <td><?php echo $no; ?></td>
@@ -99,6 +101,9 @@
   $no++;
    }
 ?>
+<tr>
+  <td><?php echo $total ?></td>
+</tr>
 </table>
 </div>
 </div>

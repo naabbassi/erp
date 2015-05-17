@@ -35,9 +35,13 @@ class File extends CI_Controller {
 		$this->load->view('404');
 	}
 	function backup(){
+		if( ! ini_get('date.timezone') )
+			{
+			   date_default_timezone_set('GMT');
+			}
 		$this->load->dbutil();
 		$config = array(
-                'ignore'      => array('user'),           // List of tables to omit from the backup
+                'ignore'      => array('customer_product_view'),           // List of tables to omit from the backup
                 'format'      => 'zip',             // gzip, zip, txt
               );
 		$backup =& $this->dbutil->backup($config); 
@@ -174,5 +178,9 @@ class File extends CI_Controller {
 		} else {
 			echo "ئاکامەکە سەرکەوتۆ نەبۆ. !";
 		}
+	}
+	function user(){
+		$this->load->model('user_model');
+		$this->load->view('file/user_view');
 	}
 }

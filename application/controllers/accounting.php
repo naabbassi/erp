@@ -313,5 +313,10 @@ class Accounting extends CI_Controller {
 			echo "<div class='alert alert-alert'>ئەنجامەکە سەرکەوتۆ نەبو.</div>";
 		}
 	}
+	function record_edit(){
+		$this->load->model('accounting_record_model');
+		$this->load->model('accounting_record_items_model');
+		$this->load->view('accounting/record_edit');
+	}
 }
 
