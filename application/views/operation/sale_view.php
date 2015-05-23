@@ -87,11 +87,10 @@
 		</thead>
 		<?php
 		$paid=$this->payment_model->select(array('sale_id'=>$sale->id));
-		$paid_no=1;
 		$total_paid=0;
 		foreach ($paid as $key) { ?>
 					<tr>
-						<td class="text-center"><?php echo $paid_no ?></td>
+						<td class="text-center"><?php echo $key->id; ?></td>
 						<td class="text-center" colspan='1'><?php echo $key->type ?></td>
 						<td class="text-center" colspan="1"><?php echo $key->date_time ?></td>
 						<td class="text-center" colspan="2"><?php echo $key->description ?></td>

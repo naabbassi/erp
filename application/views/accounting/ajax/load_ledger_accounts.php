@@ -5,8 +5,7 @@
 			<?php foreach ($res as $key) { ?>
 				<option value="<?php echo $key->id ?>"><?php echo $key->title ?></option>
 		<?php }
-	}else
-	{
+	} else{
 		echo "<option>Error</option>";
 	}
 ?>

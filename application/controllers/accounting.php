@@ -316,7 +316,89 @@ class Accounting extends CI_Controller {
 	function record_edit(){
 		$this->load->model('accounting_record_model');
 		$this->load->model('accounting_record_items_model');
+		$this->load->model('group_accounts_model');
+		$this->load->model('ledger_accounts_model');
+		$this->load->model('sub_accounts_model');
 		$this->load->view('accounting/record_edit');
+	}
+	function update_record_details(){
+		if($this->uri->segment(3)){
+			$data=array(
+				'title'=>$this->input->post('title'),
+				'record_date'=>$this->input->post('record_date'),
+				'description'=>$this->input->post('description')
+				);
+			$this->load->model('accounting_record_model');
+			$res=$this->accounting_record_model->update($data,array('id'=>$this->uri->segment(3)));
+			if ($res) {
+				echo '<div class="alert alert-success">successfuly</div>';
+			}
+		}
+	}
+	function edit_record_details(){
+		$this->load->model('accounting_record_model');
+		$this->load->model('accounting_record_items_model');
+		$this->load->model('group_accounts_model');
+		$this->load->model('ledger_accounts_model');
+		$this->load->model('sub_accounts_model');
+		$this->load->model('sub_accounts_model');
+		$this->load->model('independent_model');
+		$this->load->model('customer_model');
+		$this->load->model('revolving_model');
+		$this->load->model('personnel_model');
+		$this->load->model('owners_model');
+		$this->load->model('fix_assets_model');
+		$this->load->model('banks_model');
+		$this->load->model('general_model');
+		$this->load->view('accounting/record_item_edit');
+	}
+	function update_record_item(){
+		if($this->uri->segment(3)){
+			$item_data=array(
+								'group_id'=>$this->input->post('group_id'),
+								'ledger_id'=>$this->input->post('ledger_id'),
+								'sub_id'=>$this->input->post('sub_id'),
+								'detail_id'=>$this->input->post('detail_id'),
+								'debit'=>$this->input->post('debit'),
+								'credit'=>$this->input->post('credit'),
+								'title'=>$this->input->post('title'),
+								'item_date'=>$this->input->post('item_date'),
+								'user_id'=>$_SESSION['user_id']
+								);
+			$this->load->model('accounting_record_items_model');
+			$res=$this->accounting_record_items_model->update($item_data,array('id'=>$this->uri->segment(3)));
+			if($res){
+				echo "<div class='alert alert-success'>Success</div>";
+			} else {
+				echo "<div class='alert alert-warning'>Failure</div>";
+			}
+		}
+	}
+	function new_record_item(){
+		$this->load->model('group_accounts_model');
+		$this->load->view('accounting/new_record_item');
+	}
+	function insert_record_new_item(){
+		if($this->uri->segment(3)){
+			$item_data=array(
+								'group_id'=>$this->input->post('group_id'),
+								'ledger_id'=>$this->input->post('ledger_id'),
+								'sub_id'=>$this->input->post('sub_id'),
+								'detail_id'=>$this->input->post('detail_id'),
+								'debit'=>$this->input->post('debit'),
+								'credit'=>$this->input->post('credit'),
+								'title'=>$this->input->post('title'),
+								'item_date'=>$this->input->post('item_date'),
+								'user_id'=>$_SESSION['user_id']
+								);
+			$this->load->model('accounting_record_items_model');
+			$res=$this->accounting_record_items_model->insert($item_data);
+			if($res){
+				echo "<div class='alert alert-success'>Success</div>";
+			} else {
+				echo "<div class='alert alert-warning'>Failure</div>";
+			}
+		}
 	}
 }
 

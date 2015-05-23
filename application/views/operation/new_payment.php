@@ -90,7 +90,7 @@
     $total=$total+$key->amount;
    ?>
     <tr>
-      <td><?php echo $no; ?></td>
+      <td><?php echo $key->id; ?></td>
       <td><?php echo $key->sale_id; ?></td>
       <?php echo "<td> $customer->f_name $customer->m_name $customer->l_name</td>"; ?>
       <td><?php echo $key->date_time; ?></td>

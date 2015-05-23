@@ -41,7 +41,6 @@ if (isset($_SESSION['record_items'])) { ?>
     <td class="text-info text-center info"><?php echo number_format($debit,2); ?> $</td>
     <td class="text-success text-center success"><?php echo number_format($credit,2); ?> $</td>
   </tr>
-  </thead>
   </table>
 	<?php }else{ ?>
 	<div class="alert alert-info">No items have been added</div>
