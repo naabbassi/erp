@@ -6,11 +6,11 @@
 </head>
 <body>
 <div class="container">
-  <?php
+  <?php 
   $this->load->view('nav');
   ?>
 <div class="col-md-6" id="form">
-<?php echo form_open_multipart('file/new_user',array('class' => 'form-horizontal')); ?>
+<?php echo form_open_multipart('define/new_customer',array('class' => 'form-horizontal')); ?>
 
   <div class="form-group">
     <label class="col-sm-4 control-label">نێو :</label>
@@ -31,7 +31,7 @@
     </div>
   </div>
    <div class="form-group">
-    <label  class="col-sm-4 control-label">ژمارە تلفون	 : </label>
+    <label  class="col-sm-4 control-label">n : </label>
     <div class="col-sm-8">
       <input class="form-control" type="text" name="phone"  placeholder="ژمارە تلفون  " required>
     </div>
@@ -75,7 +75,7 @@
   <th>کەفیل</th>
   <th>کارگێری</th>
 </thead>
-<?php
+<?php 
   $no=1;
   $res=$this->user_model->all();
   foreach ($res as $key) {
@@ -133,7 +133,7 @@ $('#table').on('click','#edit',function(e) {
     error:function(data){
       $('#notify').html(data).show().fadeOut(5000);
       }
-    });
+    }); 
     e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
     });
 });

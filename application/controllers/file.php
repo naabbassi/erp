@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class File extends CI_Controller {
-
+	
 	function __construct()
 	{
 		parent::__construct();
@@ -28,6 +28,9 @@ class File extends CI_Controller {
 	{
 		$this->load->view('nav');
 	}
+	function welcome(){
+		$this->load->view('welcome');
+	}
 	function error404(){
 		$this->load->view('404');
 	}
@@ -41,7 +44,7 @@ class File extends CI_Controller {
                 'ignore'      => array('customer_product_view'),           // List of tables to omit from the backup
                 'format'      => 'zip',             // gzip, zip, txt
               );
-		$backup =& $this->dbutil->backup($config);
+		$backup =& $this->dbutil->backup($config); 
 		// Load the download helper and send the file to your desktop
 		$this->load->helper('download');
 		force_download('ERP_BackUp_'.date('Y/m/d').'.zip',$backup);

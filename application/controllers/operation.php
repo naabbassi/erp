@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Operation extends CI_Controller {
-
+	
 	function __construct()
 	{
 		parent::__construct();
@@ -28,15 +28,6 @@ class Operation extends CI_Controller {
 	{
 		$this->load->view('nav');
 	}
-	function purchase(){
-		$this->load->model('storage_model');
-		$this->load->model('product_model');
-		$this->load->model('unit_model');
-		$this->load->model('customer_model');
-		$this->load->model('cat_model');
-		$this->load->view('operation/new_purchase');
-	}
-
 
 	function sale(){
 		$this->load->model('storage_model');
@@ -58,7 +49,7 @@ class Operation extends CI_Controller {
 			$this->cart->insert($data);
 			echo 'success';
 		} else {
-			echo 'error in recived data.!';
+			echo 'error in recived data.!';	
 		}
 	}
 	function items_table(){
@@ -436,4 +427,4 @@ class Operation extends CI_Controller {
 		}
 	}
 
-}
+}	

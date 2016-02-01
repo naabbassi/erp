@@ -4,14 +4,14 @@
 </head>
 <body>
 <div class="container">
-	<?php
+	<?php 
 	$this->load->view('nav');
 		?>
 <div class="col-md-12" id="invoice_content">
   <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist" id="invoice_tab">
   <li class="active"><a href="#items" role="tab" data-toggle="tab">ناوەڕۆک</a></li>
-  <li ><a href="#payment" role="tab" data-toggle="tab">پارە وەرگرتن</a></li>
+  <li ><a href="#payment" role="tab" data-toggle="tab">پارە دان</a></li>
   <li ><a href="#details" role="tab" data-toggle="tab">وڕدەکاری</a></li>
 </ul>
 
@@ -21,7 +21,7 @@
 <!-- Details Tab Content -->
   <div class="tab-pane" id="details">
   	<br>
-    <div class="col-md-6">
+    <div class="col-md-6"> 
      <?php echo form_open('operation/sale_invoice',array('class'=>'form-horizontal')) ?>
       <div class="form-group">
         <label  class="col-sm-4 control-label">موشتەری :</label>
@@ -29,7 +29,7 @@
           <select class="form-control" name='customer_id'  required>
             <option></option>
           <?php $customer=$this->customer_model->all();
-              foreach ($customer as $item) {
+              foreach ($customer as $item) { 
               echo "<option value='$item->id'>$item->f_name"." $item->m_name"." $item->l_name</option>"  ;
               }
            ?></select>
@@ -72,7 +72,7 @@
   <!-- Payment Tab Content -->
   <div class="tab-pane" id="payment">
     <br>
-    <div class="col-md-6">
+    <div class="col-md-6"> 
      <?php echo form_open('operation/ajax_payment',array('class'=>'form-horizontal','id'=>'payment_form')) ?>
       <div class="form-group">
         <label  class="col-sm-4 control-label">شێواز :</label>
@@ -126,7 +126,7 @@
           <select class="form-control" name='storage_id' required>
             <option></option>
           <?php $storage=$this->storage_model->all();
-              foreach ($storage as $item) {
+              foreach ($storage as $item) { 
               echo "<option value='$item->id'>$item->title</option>"  ;
               }
            ?></select>
@@ -138,7 +138,7 @@
           <select class="form-control" name='cat_id' id="cat" required>
             <option></option>
           <?php $product=$this->cat_model->all();
-              foreach ($product as $item) {
+              foreach ($product as $item) { 
               echo "<option value='$item->id'>$item->title</option>"  ;
               }
            ?></select>
@@ -241,7 +241,7 @@
 		error:function(data){
 		}
 		});
-		e.preventDefault();
+		e.preventDefault(); 
     });
 
     $('#payment_form').on('submit',function(e) {
@@ -256,7 +256,7 @@
     error:function(data){
     }
     });
-    e.preventDefault();
+    e.preventDefault(); 
     });
 
     $('#refresh').click(function(e){
@@ -292,8 +292,8 @@
 			},
 			error:function(data){
 				console.log(data);
-			}
-		});
+			}	
+		}); 
 	}
 		e.preventDefault();
     });
@@ -309,8 +309,8 @@
         },
         error:function(data){
           console.log(data);
-        }
-      });
+        } 
+      }); 
     }
     e.preventDefault();
     });
