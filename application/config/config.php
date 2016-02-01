@@ -15,7 +15,7 @@
 |
 */
 $config['base_url']	= 'http://localhost/ERP';
-
+$config['currency_symbol'] = 'دینار';
 /*
 |--------------------------------------------------------------------------
 | Index File
