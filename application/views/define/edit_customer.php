@@ -25,6 +25,16 @@
       <input class="form-control" type="text" name="phone"  value="<?php echo $edit_item->phone ?>">
     </div>
   </div>
+  <div class="form-group">
+	 <label  class="col-sm-4 control-label">جوری موشتەری : </label>
+	 <div class="col-sm-8">
+		 <select class="form-control" name="type">
+			 <option value="buyer" <?php if($edit_item->type == 'buyer') echo 'selected'; ?>>کڕیار</option>
+			 <option value="saler" <?php if($edit_item->type == 'saler') echo 'selected'; ?>>فرۆشیار</option>
+			 <option value="double" <?php if($edit_item->type == 'double') echo 'selected'; ?>>کڕیار و فرۆشیار</option>
+		 </select>
+	 </div>
+ </div>
    <div class="form-group">
     <label class="col-sm-4 control-label">شوێن : </label>
     <div class="col-sm-8">

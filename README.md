@@ -1,12 +1,11 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This is a sale control system with some subsystems based in Kurdish language
 
-ERP for private using
+when i started working on this project i was an accountant in north of Iraq (Kurdistan) and i couldn't find any useful
+software to control flow of company and i decided to write my own tools to make efficient control over there.
 
-* the small ERP to using for managment and organisation private activities that their responsibility is over myself
-* Version 1.0
-* to write this ERP we using codeigniter framework
+in implementing this projects i used Codeigniter framework 2.2 also some Javascript to make more interactive the application
+also for database i used Mysql DB.
 
-Address : Kurdistan region government , Erbil , Gullan St , Sofy mall , No 58
-Phone No : +964 750 827 3597
+so get enjoy.

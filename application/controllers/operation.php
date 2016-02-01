@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Operation extends CI_Controller {
-	
+
 	function __construct()
 	{
 		parent::__construct();
@@ -28,6 +28,84 @@ class Operation extends CI_Controller {
 	{
 		$this->load->view('nav');
 	}
+	function purchase()
+	{
+		$this->load->model('storage_model');
+		$this->load->model('product_model');
+		$this->load->model('unit_model');
+		$this->load->model('customer_model');
+		$this->load->model('cat_model');
+		$this->load->view('operation/new_purchase');
+	}
+	function purchase_invoice(){
+		if ($this->input->post() &&  $this->cart->total_items() > 0) {
+			$data=array(
+				'customer_id'  =>$this->input->post('customer_id'),
+				'title'        =>$this->input->post('title'),
+				'discount'    =>$this->input->post('discount'),
+				'date_time'    =>$this->input->post('date_time'),
+				'description'  =>$this->input->post('description'),
+				'user_id'     => $_SESSION['user_id']
+				);
+			$this->load->model('purchase_model');
+			$res=$this->purchase_model->insert($data);
+			if ($res == 1) {
+				$purchase_id=$this->db->insert_id();
+				$this->load->model('purchase_details_model');
+				foreach ($this->cart->contents() as $item) {
+					$options=$this->cart->product_options($item['rowid']);
+					$data_item=array(
+						'purchase_id'     => $purchase_id,
+						'storage_id'  => $options['storage_id'],
+						'product_id'  => $item['id'],
+						'unit_id'     => $item['name'],
+						'quantity'    => $item['qty'],
+						'price'  => $item['price'],
+						'user_id'     => $_SESSION['user_id']
+						);
+					$this->purchase_details_model->insert($data_item);
+				}
+				$this->cart->destroy();
+				$data['message']='<div class="alert alert-success">پاشکەوت کردن سەرکەوتۆ بۆ..! '.$purchase_id.'</div>';
+				if (isset($_SESSION['payment']['type']) && isset($_SESSION['payment']['amount'])) {
+				$this->load->model('purchase_payment_model');
+				date_default_timezone_set('UTC');
+				$payment=array(
+					'customer_id' =>$this->input->post('customer_id'),
+					'purchase_id' =>$purchase_id,
+					'type'        =>$_SESSION['payment']['type'],
+					'amount'      =>$_SESSION['payment']['amount'],
+					'description' =>$_SESSION['payment']['description'],
+					'date_time'   =>$_SESSION['payment']['date'],
+					'user_id'     => $_SESSION['user_id']
+					);
+				$payment_res=$this->purchase_payment_model->insert($payment);
+				if($payment_res){unset($_SESSION['payment']);}
+			}
+			} else {
+				$data['message']='<div class="alert alert-danger">Unable to save invoice details..!</div>';
+			}
+		} else {
+			$data['message']='<div class="alert alert-danger">Invalid Data..!</div>';
+		}
+		$this->load->model('cat_model');
+		$this->load->model('product_model');
+		$this->load->model('unit_model');
+		$this->load->model('customer_model');
+		$this->load->model('storage_model');
+		$this->load->view('operation/new_purchase',$data);
+	}
+	function purchase_list(){
+		$this->load->model('customer_model');
+		$this->load->model('purchase_model');
+		$this->load->model('purchase_details_model');
+		$this->load->model('purchase_payment_model');
+		if($this->input->post()){
+			$this->load->view('operation/ajax_purchase_list');
+		} else {
+			$this->load->view('operation/purchase_list');
+		}
+	}
 
 	function sale(){
 		$this->load->model('storage_model');
@@ -49,7 +127,7 @@ class Operation extends CI_Controller {
 			$this->cart->insert($data);
 			echo 'success';
 		} else {
-			echo 'error in recived data.!';	
+			echo 'error in recived data.!';
 		}
 	}
 	function items_table(){
@@ -427,4 +505,4 @@ class Operation extends CI_Controller {
 		}
 	}
 
-}	
+}

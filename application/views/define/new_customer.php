@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="container">
-  <?php 
+  <?php
   $this->load->view('nav');
   ?>
 <div class="col-md-6" id="form">
@@ -30,6 +30,16 @@
       <input class="form-control" type="text" name="l_name" placeholder="نێوی سێیەم" required>
     </div>
   </div>
+	<div class="form-group">
+	 <label  class="col-sm-4 control-label">جوری موشتەری : </label>
+	 <div class="col-sm-8">
+		 <select class="form-control" name="type">
+			 <option value="buyer">کڕیار</option>
+			 <option value="saler">فرۆشیار</option>
+			 <option value="double">کڕیار و فرۆشیار</option>
+		 </select>
+	 </div>
+ </div>
    <div class="form-group">
     <label  class="col-sm-4 control-label">ژمارە تلفون : </label>
     <div class="col-sm-8">
@@ -70,12 +80,13 @@
 <thead>
   <th>#</th>
   <th>نێوی مشتری</th>
+	<th>جوری موشتەری</th>
   <th>تلفون</th>
   <th>شوێن</th>
   <th>کەفیل</th>
   <th>کارگێری</th>
 </thead>
-<?php 
+<?php
   $no=1;
   $res=$this->customer_model->all();
   foreach ($res as $key) {
@@ -83,6 +94,20 @@
     <tr>
       <td><?php echo $no; ?></td>
       <td><?php echo $key->f_name.' '.$key->m_name.' '.$key->l_name; ?></td>
+			<td><?php  switch ($key->type) {
+				case 'buyer':
+					echo 'کڕیار';
+					break;
+				case 'saler':
+					echo "فرۆشیار";
+					break;
+				case 'double':
+					echo "کڕیار و فرۆشیار";
+					break;
+				default:
+					# code...
+					break;
+			} ?></td>
       <td><?php echo $key->phone; ?></td>
       <td><?php echo $key->address; ?></td>
       <td><?php echo $key->suporter; ?></td>
@@ -132,7 +157,7 @@ $('#table').on('click','#edit',function(e) {
     error:function(data){
       $('#notify').html(data).show().fadeOut(5000);
       }
-    }); 
+    });
     e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
     });
 });

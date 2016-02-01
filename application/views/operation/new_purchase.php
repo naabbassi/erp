@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>فرۆش</title>
+	<title>کڕین</title>
 </head>
 <body>
 <div class="container">
@@ -11,7 +11,7 @@
   <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist" id="invoice_tab">
   <li class="active"><a href="#items" role="tab" data-toggle="tab">ناوەڕۆک</a></li>
-  <li ><a href="#payment" role="tab" data-toggle="tab">پارە وەرگرتن</a></li>
+  <li ><a href="#payment" role="tab" data-toggle="tab">پارە دان</a></li>
   <li ><a href="#details" role="tab" data-toggle="tab">وڕدەکاری</a></li>
 </ul>
 
@@ -22,15 +22,15 @@
   <div class="tab-pane" id="details">
   	<br>
     <div class="col-md-6">
-     <?php echo form_open('operation/sale_invoice',array('class'=>'form-horizontal')) ?>
+     <?php echo form_open('operation/purchase_invoice',array('class'=>'form-horizontal')) ?>
       <div class="form-group">
         <label  class="col-sm-4 control-label">موشتەری :</label>
         <div class="col-sm-8">
-					<select class="form-control" name='customer_id'  required>
+          <select class="form-control" name='customer_id'  required>
             <option></option>
             <?php
             //once for retrive the doble type customers and once for salers
-            $customer=$this->customer_model->select(array('type' =>'buyer'));
+            $customer=$this->customer_model->select(array('type' =>'saler'));
               foreach ($customer as $item) {
                 echo "<option value='$item->id'>$item->f_name"." $item->m_name"." $item->l_name</option>"  ;
                 }
