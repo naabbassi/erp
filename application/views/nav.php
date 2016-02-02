@@ -56,6 +56,7 @@
                   <li><?= anchor('operation/sale_back','گەڕانەوە لە فرۆش') ?></a></li>
                    <li class="divider"></li>
                   <li><?= anchor('operation/payment','وەرگرتنی پارە') ?></a></li>
+                  <li><?= anchor('operation/purchase_payment','دانی پارە') ?></a></li>
                 </ul>
               </li>
               <li class="dropdown">
@@ -66,7 +67,7 @@
                   <li><?= anchor('accounts/fix_assets','دارایی ثبتەکان') ?></a></li>
                   <li><?= anchor('accounts/stock_holders','خاوەن پشکەکان') ?></a></li>
                 </ul>
-              </li> 
+              </li>
                <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">ژمێریاری<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">

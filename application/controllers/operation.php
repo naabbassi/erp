@@ -217,6 +217,74 @@ class Operation extends CI_Controller {
 			$this->purchase_details_model->delete(array('id'=>$this->uri->segment(3)));
 		}
 	}
+	function purchase_payment(){
+		$this->load->model('purchase_model');
+		$this->load->model('customer_model');
+		$this->load->model('purchase_payment_model');
+		$this->load->view('operation/new_purchase_payment');
+	}
+	function load_purchase_invoice_list(){
+		$this->load->model('purchase_model');
+		$this->load->view('operation/load_purchase_invoice_list');
+	}
+	function new_purchase_payment(){
+		if ($this->input->post()) {
+		$this->load->model('sale_model');
+		$this->load->model('customer_model');
+		$this->load->model('purchase_payment_model');
+		$payment=array(
+					'customer_id' =>$this->input->post('customer_id'),
+					'purchase_id'     =>$this->input->post('purchase_id'),
+					'type'        =>$this->input->post('payment_type'),
+					'amount'      =>$this->input->post('payment_amount'),
+					'description' =>$this->input->post('payment_description'),
+					'date_time'   =>$this->input->post('payment_date'),
+					'user_id'     => $_SESSION['user_id']
+					);
+		$res=$this->purchase_payment_model->insert($payment);
+		if ($res == 1) {
+			$this->session->set_flashdata('new_payment' , "<div class='alert alert-success'>Data was saved successfuly</div>");
+		} else {
+			$this->session->set_flashdata('new_payment' , "<div class='alert alert-danger'>operation was not successfuly</div>");
+		}
+		$this->load->view('operation/new_purchase_payment');
+		}
+	}
+	function delete_purchase_payment()
+	{
+		echo "<div class='alert alert-danger'>you haven't permission to delete payments</div>";
+	}
+	function edit_purchase_payment(){
+		if ($this->uri->segment(3)) {
+			$this->load->model('purchase_payment_model');
+			$this->load->model('customer_model');
+			$this->load->model('purchase_model');
+			$this->load->view('operation/edit_purchase_payment');
+		}
+	}
+	function update_purchase_payment(){
+		if ($this->input->post() && $this->uri->segment(3)) {
+		$this->load->model('purchase_model');
+		$this->load->model('customer_model');
+		$this->load->model('purchase_payment_model');
+		$payment=array(
+					'customer_id' =>$this->input->post('customer_id'),
+					'purchase_id'     =>$this->input->post('purchase_id'),
+					'type'        =>$this->input->post('payment_type'),
+					'amount'      =>$this->input->post('payment_amount'),
+					'description' =>$this->input->post('payment_description'),
+					'date_time'   =>$this->input->post('payment_date'),
+					'user_id'     => $_SESSION['user_id']
+					);
+		$res=$this->purchase_payment_model->update($payment,array('id'=>$this->uri->segment(3)));
+		if ($res == 1) {
+			$this->session->set_flashdata('update_payment',"<div class='alert alert-success'>گوڕانکاری ئەنجام دڕا.  </div>");
+		} else {
+			$this->session->set_flashdata('update_payment',"<div class='alert alert-danger'>گورانکاری سەرکەوتۆ نەبو.</div>");
+		}
+		redirect('operation/purchase_payment',$result);
+		}
+	}
 	function sale(){
 		$this->load->model('storage_model');
 		$this->load->model('product_model');
@@ -482,7 +550,7 @@ class Operation extends CI_Controller {
 		}
 	}
 	function delete_payment(){
-			echo "<div class='alert alert-warning'>Received data not valid.!</div>";
+			echo "<div class='alert alert-warning'>you haven't permission to delete payments</div>";
 	}
 	function edit_payment(){
 		if ($this->uri->segment(3)) {
