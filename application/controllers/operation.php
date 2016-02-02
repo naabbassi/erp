@@ -107,7 +107,116 @@ class Operation extends CI_Controller {
 			$this->load->view('operation/purchase_list');
 		}
 	}
-
+	function purchase_show(){
+		$this->load->model('customer_model');
+		$this->load->model('purchase_model');
+		$this->load->model('purchase_details_model');
+		$this->load->model('purchase_payment_model');
+		$this->load->model('company_model');
+		$this->load->model('product_model');
+		$this->load->model('unit_model');
+		$this->load->view('operation/purchase_view');
+	}
+	function edit_purchase(){
+		$this->load->model('purchase_model');
+		$this->load->model('purchase_details_model');
+		$this->load->model('storage_model');
+		$this->load->model('product_model');
+		$this->load->model('unit_model');
+		$this->load->model('customer_model');
+		$this->load->model('cat_model');
+		$this->load->view('operation/purchase_edit');
+	}
+	function edit_purchase_detail(){
+		if ($this->uri->segment(3)) {
+			$this->load->model('purchase_model');
+			$this->load->model('purchase_details_model');
+			$this->load->model('storage_model');
+			$this->load->model('product_model');
+			$this->load->model('unit_model');
+			$this->load->model('customer_model');
+			$this->load->model('cat_model');
+			$this->load->view('operation/edit_purchase_detail_item');
+		}
+	}
+	function update_purchase_item(){
+		if ($this->input->post() && $this->uri->segment(3)) {
+			$data=array(
+				'storage_id'  => $this->input->post('storage_id'),
+				'product_id'  => $this->input->post('product_id'),
+				'unit_id'     => $this->input->post('unit_id'),
+				'quantity'    => $this->input->post('quantity'),
+				'price'  	  => $this->input->post('price'),
+				'user_id'     => $_SESSION['user_id']
+				);
+			$this->load->model('purchase_details_model');
+			$res=$this->purchase_details_model->update($data,array('id'=>$this->uri->segment(3)));
+			if ($res) {
+				echo "<div class='alert alert-success'>گورانکارێکان پاشکەوت کرا.</div>";
+			} else {
+				echo "<div class='alert alert-warning'>ئەنجامەکان سەرکەوتو نەبۆ.</div>";
+			}
+		} else {
+			echo "<div class='alert alert-warning'>ئەنجامەکان سەرکەوتو نەبۆ.</div>";
+		}
+	}
+	function new_purchase_detail(){
+		if ($this->uri->segment(3)) {
+			$this->load->model('purchase_model');
+			$this->load->model('purchase_details_model');
+			$this->load->model('storage_model');
+			$this->load->model('product_model');
+			$this->load->model('unit_model');
+			$this->load->model('customer_model');
+			$this->load->model('cat_model');
+			$this->load->view('operation/new_purchase_detail_item');
+		} else {
+			echo "<div class='alert alert-warning'>داتای ناردراو ڕەوا نێ.</div>";
+		}
+	}
+	function update_purchase_detail(){
+		if ($this->input->post() && $this->uri->segment(3)) {
+		$data=array(
+				'customer_id'  =>$this->input->post('customer_id'),
+				'title'        =>$this->input->post('title'),
+				'invoice_no'   =>$this->input->post('invoice_no'),
+				'discount'     =>$this->input->post('discount'),
+				'date_time'    =>$this->input->post('date_time'),
+				'description'  =>$this->input->post('description'),
+				'user_id'      => $_SESSION['user_id']
+				);
+			$this->load->model('purchase_model');
+			$res=$this->purchase_model->update($data,array('id'=>$this->uri->segment(3)));
+			if ($res) {
+				echo "<div class='alert alert-success'>گورانکاری سەرکەوتو بۆ.</div>";
+			} else {
+				echo "<div class='alert alert-warning'>گورانکاری سەرکەوتو نبۆ.</div>";
+			}
+		} else {
+			echo "<div class='alert alert-warning'>گورانکاری سەرکەوتو نبۆ.</div>";
+		}
+	}
+	function insert_purchase_item(){
+		if ($this->uri->segment(3) && $this->input->post()) {
+			$data=array(
+						'purchase_id'     => $this->uri->segment(3),
+						'storage_id'  => $this->input->post('storage_id'),
+						'product_id'  => $this->input->post('product_id'),
+						'unit_id'     => $this->input->post('unit_id'),
+						'quantity'    => $this->input->post('quantity'),
+						'price'       => $this->input->post('price'),
+						'user_id'     => $_SESSION['user_id']
+				);
+			$this->load->model('purchase_details_model');
+			$this->purchase_details_model->insert($data);
+		}
+	}
+	function delete_purchase_item(){
+		if ($this->uri->segment(3)) {
+			$this->load->model('purchase_details_model');
+			$this->purchase_details_model->delete(array('id'=>$this->uri->segment(3)));
+		}
+	}
 	function sale(){
 		$this->load->model('storage_model');
 		$this->load->model('product_model');

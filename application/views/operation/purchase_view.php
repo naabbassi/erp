@@ -9,22 +9,22 @@
 	<div class="logo"><img src="<?php echo base_url() ?>/asset/img/logo.png"></div>
 	<div class="info">
 	<?php
-		$sale=$this->sale_model->findbyid($this->uri->segment(3));
-		echo "<p class='back_color'>ژمارە فاکتۆر : S".$sale->id."</p>";
-		echo "<p class='back_color'>".$sale->date_time."</p>";
+		$purchase=$this->purchase_model->findbyid($this->uri->segment(3));
+		echo "<p class='back_color'>ژمارە فاکتۆر : P".$purchase->id."</p>";
+		echo "<p class='back_color'>".$purchase->date_time."</p>";
 	?>
 	</div>
-	<h3 class="invoice">فاکتوڕی فرۆش :: Sale Invoice</h3>
+	<h3 class="invoice">فاکتۆری کڕین :: Purchase Invoice</h3>
 	<BR><BR><BR><BR><BR>
 	<div class="customer">
 	<?php
 		$company=$this->company_model->get_first()->row();
-		echo "<br><h4>".$company->title." </h4>";
+		echo "<br><h4>".$company->title." (کڕیار)</h4>";
 		echo "<p>ژمارە تلفۆن : ".$company->phone."</p>";
 		echo "<p>شوێن : ".$company->adress."</p>";
 		echo "<hr>";
-		$customer=$this->customer_model->findbyid($sale->customer_id);
-		echo "<p>مۆشتەری  : ".$customer->f_name.' '.$customer->m_name.' '.$customer->l_name."</p>";
+		$customer=$this->customer_model->findbyid($purchase->customer_id);
+		echo "<p>فرۆشیار : ".$customer->f_name.' '.$customer->m_name.' '.$customer->l_name."</p>";
 		echo "<p>ژمارە تلفۆن : ".$customer->phone."</p>";
 		echo "<p>شوێن : ".$customer->address."</p><br>";
 	?>
@@ -32,8 +32,8 @@
 	<div class="description">
 		<br>
 		<?php
-			echo "<p>سەردێر: ".$sale->title."</p>";
-			echo "<p>تێبینی : ".$sale->description."</p>";
+			echo "<p>سەردێر: ".$purchase->title."</p>";
+			echo "<p>تێبینی : ".$purchase->description."</p>";
 		?>
 	</div>
 	<table>
@@ -48,7 +48,7 @@
 		<?php
 		$no=1;
 		$invoice_total=0;
-		$res=$this->sale_details_model->select(array('sale_id'=>$this->uri->segment(3)));
+		$res=$this->purchase_details_model->select(array('purchase_id'=>$this->uri->segment(3)));
 		foreach ($res as $key) {
 			$product=$this->product_model->findbyid($key->product_id);
 			$unit=$this->unit_model->findbyid($key->unit_id);
@@ -71,11 +71,11 @@
 		</tr>
 		<tr>
 			<td class="red-text text-center" colspan="6">داشکاندن (Discount) : </td>
-			<td class="red-text ">( <?php echo number_format($sale->discount) ?> دینار )</td>
+			<td class="red-text ">( <?php echo number_format($purchase->discount) ?> دینار )</td>
 		</tr>
 		<tr>
 			<td class=" text-center" colspan="6">کۆی گشتی و داشکاندن(Grand Total With Discount): </td>
-			<td class="sum"><p class="underline"><?php echo number_format($invoice_total-$sale->discount) ?> دینار</p></td>
+			<td class="sum"><p class="underline"><?php echo number_format($invoice_total-$purchase->discount) ?> دینار</p></td>
 		</tr>
 		<tr><td colspan="6" class="payment_title">.: پارەی دراو (Payment) :.</td></tr>
 		<thead >
@@ -86,7 +86,7 @@
 			<th>بڕی پارە (Amount)</th>
 		</thead>
 		<?php
-		$paid=$this->payment_model->select(array('sale_id'=>$sale->id));
+		$paid=$this->purchase_payment_model->select(array('purchase_id'=>$purchase->id));
 		$total_paid=0;
 		foreach ($paid as $key) { ?>
 					<tr>
@@ -105,7 +105,7 @@
 				</tr>
 				<tr>
 					<td  class="red-text" colspan="6">بڕی پارەی ماوە سەبارەت بە ئەم فاکتورە (Debt Due this invoice): </td>
-					<td  class="sum red-text"><p class="underline"><?php echo number_format($invoice_total-$sale->discount-$total_paid )?> دینار</p></td>
+					<td  class="sum red-text"><p class="underline"><?php echo number_format($invoice_total-$purchase->discount-$total_paid )?> دینار</p></td>
 				</tr>
 	</table>
 	<br><br><br><br><br>
