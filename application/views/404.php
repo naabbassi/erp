@@ -33,7 +33,7 @@ img{max-width:100%;}
  	font-family:tahoma !important;
  }
 body{
-	background: url('<?php echo base_url(); ?>asset/404/bg1.png');
+	background:#bbb;
 	direction:rtl;
 	}
 .content p{
@@ -54,6 +54,7 @@ body{
 .content a{
 	color:#fff;
 	font-family: "Century Gothic";
+
 	background: #666666; /* Old browsers */
 	background: -moz-linear-gradient(top,  #666666 0%, #666666 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#666666), color-stop(100%,#666666)); /* Chrome,Safari4+ */
@@ -66,13 +67,7 @@ body{
 	border-radius: 1em;
 }
 .content a:hover{
-	color:#aa88ee;
-}
-.logo{
-	text-align:center;
-	-webkit-box-shadow: 0 8px 6px -6px rgb(97, 97, 97);
-	-moz-box-shadow: 0 8px 6px -6px  rgb(97, 97, 97);
-	box-shadow: 0 8px 6px -6px  rgb(97, 97, 97);
+	color:orange;
 }
 .logo h1 a{
 	font-size:1em;
@@ -112,7 +107,7 @@ body{
 	}
 	.copy-right p{
 		font-size:0.9em;
-		
+
 	}
 }
 @media screen and (max-width:640px)	{
@@ -162,7 +157,7 @@ body{
 				<p>داواکارێکەت نەدوزراوە..</p>
 				<?= anchor('file','بگەرێوە بۆ سەرەتا') ?>
 				<div class="copy-right">
-					<p>2015 &copy; هەمو مافەکان پارێزراوە</p>
+					<p>2016 &copy; هەمو مافەکان پارێزراوە</p>
 				</div>
    			</div>
 			<!--End-Cotent------>
