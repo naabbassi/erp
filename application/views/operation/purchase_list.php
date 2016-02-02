@@ -40,7 +40,11 @@
 		   	  <select name="customer_id" class="small form-control">
 		   	  	<option value="0"></option>
 		   	  	<?php
-		   	  		$res=$this->customer_model->all();
+		   	  		$res=$this->customer_model->select(array('type'=>'saler'));
+		   	  		foreach ($res as $item) {
+		   	  			echo "<option value='".$item->id."'>".$item->f_name.' '.$item->m_name.' '.$item->l_name."</option>";
+		   	  		}
+							$res=$this->customer_model->select(array('type'=>'double'));
 		   	  		foreach ($res as $item) {
 		   	  			echo "<option value='".$item->id."'>".$item->f_name.' '.$item->m_name.' '.$item->l_name."</option>";
 		   	  		}

@@ -41,11 +41,12 @@ class Operation extends CI_Controller {
 		if ($this->input->post() &&  $this->cart->total_items() > 0) {
 			$data=array(
 				'customer_id'  =>$this->input->post('customer_id'),
+				'invoice_no'   =>$this->input->post('invoice_no'),
 				'title'        =>$this->input->post('title'),
-				'discount'    =>$this->input->post('discount'),
+				'discount'     =>$this->input->post('discount'),
 				'date_time'    =>$this->input->post('date_time'),
 				'description'  =>$this->input->post('description'),
-				'user_id'     => $_SESSION['user_id']
+				'user_id'      => $_SESSION['user_id']
 				);
 			$this->load->model('purchase_model');
 			$res=$this->purchase_model->insert($data);

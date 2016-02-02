@@ -41,7 +41,13 @@
            ?></select>
       </div>
       </div>
-      <div class="form-group">
+			<div class="form-group">
+        <label  class="col-sm-4 control-label">ژمارەی فاکتۆری فرۆشیار :</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control"  name="invoice_no" required>
+        </div>
+      </div>
+			<div class="form-group">
         <label  class="col-sm-4 control-label">سەردێر :</label>
         <div class="col-sm-8">
           <input type="text" class="form-control"  name="title" required>
