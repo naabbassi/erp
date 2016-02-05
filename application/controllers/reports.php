@@ -93,12 +93,26 @@ class Reports extends CI_Controller {
 	}
 	function products_report(){
 		$this->load->model('sale_model');
+		$this->load->model('purchase_model');
 		$this->load->model('sale_details_model');
 		$this->load->model('purchase_details_model');
 		$this->load->model('customer_model');
 		$this->load->model('product_model');
 		$this->load->model('unit_model');
 		$this->load->view('reports/products_report');
+	}
+	function product_report()
+	{
+		if ($this->uri->segment(3)) {
+			$this->load->model('sale_model');
+			$this->load->model('purchase_model');
+			$this->load->model('sale_details_model');
+			$this->load->model('purchase_details_model');
+			$this->load->model('product_model');
+			$this->load->model('unit_model');
+			$this->load->model('customer_model');
+			$this->load->view('reports/product_report');
+		}
 	}
 	function inventory_report(){
 		$this->load->model('product_model');
@@ -119,4 +133,3 @@ class Reports extends CI_Controller {
 		$this->load->view('reports/customer_report');
 	}
 }
-

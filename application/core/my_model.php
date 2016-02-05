@@ -12,7 +12,7 @@ class My_model extends CI_model{
 	}
 	function count($cond){
 		$query = $this->db->get_where($this->table, $cond);
-		$count = $query->num_rows(); 
+		$count = $query->num_rows();
 		return $count;
 	}
 	function select($cond,$order="",$limit=""){
@@ -41,7 +41,7 @@ class My_model extends CI_model{
 	}
 	function exist($cond){
 		$query = $this->db->get_where($this->table, $cond);
-		$count = $query->num_rows(); 
+		$count = $query->num_rows();
 		if($count == 1){
 			return true;
 		}
