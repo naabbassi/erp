@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="container">
-  <?php 
+  <?php
   $this->load->view('nav');
   ?>
 <div class="col-md-6" id="form">
@@ -17,7 +17,7 @@
         <select class="form-control" name='customer_id' id='customer' required>
           <option></option>
         <?php $customer=$this->customer_model->all();
-            foreach ($customer as $item) { 
+            foreach ($customer as $item) {
             echo "<option value='$item->id'>$item->f_name $item->m_name</option>"  ;
             }
          ?></select>
@@ -64,7 +64,7 @@
 <?php echo form_close (); ?>
 </div>
 <div class="col-md-6" id="notify">
-<?php 
+<?php
   echo $this->session->flashdata('update_payment');
   echo $this->session->flashdata('new_payment');
  ?>
@@ -81,7 +81,7 @@
   <th>بری پارە</th>
   <th>کارگێری</th>
 </thead>
-<?php 
+<?php
   $no=1;
   $total=0;
   $res=$this->payment_model->all();
@@ -157,7 +157,7 @@ $('#table').on('click','#edit',function(e) {
     error:function(data){
       $('#notify').html(data).show().fadeOut(5000);
       }
-    }); 
+    });
     e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
     });
 });

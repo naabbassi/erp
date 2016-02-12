@@ -81,13 +81,12 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">راپورت <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><?= anchor('reports/trial_balancesheet','Trial Balancesheet') ?></a></li>
+                  <li><?= anchor('reports/trial_balancesheet','بالانسی هەژمارەکان') ?></a></li>
                   <li class="divider"></li>
-                  <li><?= anchor('reports/accounts_report','Accounts Report') ?></li>
+                  <li><?= anchor('reports/accounts_report','راپۆرتی هەژمارەکان') ?></li>
                   <li class="divider"></li>
                   <li><?= anchor('reports/products_report','راپورتی کالاکان') ?></li>
                   <li class="divider"></li>
-                  <li><?= anchor('reports/inventory_report','Storage Inventory') ?></li>
                 </ul>
               </li>
             </ul>
