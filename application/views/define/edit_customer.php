@@ -4,25 +4,25 @@
   <div class="form-group">
     <label class="col-sm-4 control-label">نێو :</label>
     <div class="col-sm-8">
-      <input class="form-control" type="text" name="f_name" value="<?php echo $edit_item->f_name ?>" >
+      <input class="form-control" type="text" name="f_name" value="<?= $edit_item->f_name ?>" >
     </div>
   </div>
     <div class="form-group">
     <label class="col-sm-4 control-label">نێو باب:</label>
     <div class="col-sm-8">
-      <input class="form-control" type="text" name="m_name" value="<?php echo $edit_item->m_name ?>" >
+      <input class="form-control" type="text" name="m_name" value="<?= $edit_item->m_name ?>" >
     </div>
   </div>
     <div class="form-group">
     <label class="col-sm-4 control-label">نێو باپیر:</label>
     <div class="col-sm-8">
-      <input class="form-control" type="text" name="l_name" value="<?php echo $edit_item->l_name ?>" >
+      <input class="form-control" type="text" name="l_name" value="<?= $edit_item->l_name ?>" >
     </div>
   </div>
    <div class="form-group">
     <label  class="col-sm-4 control-label">ژمارە تلفون : </label>
     <div class="col-sm-8">
-      <input class="form-control" type="text" name="phone"  value="<?php echo $edit_item->phone ?>">
+      <input class="form-control" type="text" name="phone"  value="<?= $edit_item->phone ?>">
     </div>
   </div>
   <div class="form-group">
@@ -38,19 +38,19 @@
    <div class="form-group">
     <label class="col-sm-4 control-label">شوێن : </label>
     <div class="col-sm-8">
-      <textarea name="address" class="form-control" rows="3"><?php echo $edit_item->address ?></textarea>
+      <textarea name="address" class="form-control" rows="3"><?= $edit_item->address ?></textarea>
     </div>
   </div>
   <div class="form-group">
     <label class="col-sm-4 control-label">ئیمەیل </label>
     <div class="col-sm-8">
-      <input class="form-control" type="text" name="email" value="<?php echo $edit_item->email ?>" >
+      <input class="form-control" type="text" name="email" value="<?= $edit_item->email ?>" >
     </div>
   </div>
   <div class="form-group">
     <label class="col-sm-4 control-label">کەفیل </label>
     <div class="col-sm-8">
-      <input class="form-control" type="text" name="suporter" value="<?php echo $edit_item->suporter ?>" >
+      <input class="form-control" type="text" name="suporter" value="<?= $edit_item->suporter ?>" >
     </div>
   </div>
   <div class="form-group">
@@ -59,6 +59,6 @@
       <?= anchor('define/customer','پاشگەز بۆنەوە',array('class'=>'btn btn-primary')); ?>
     </div>
   </div >
-<?php echo form_close (); ?>
-<?php echo form_close (); ?>
+<?= form_close (); ?>
+<?= form_close (); ?>
 </div>

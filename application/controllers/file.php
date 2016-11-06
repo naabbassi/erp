@@ -180,4 +180,37 @@ class File extends CI_Controller {
 		$this->load->model('user_model');
 		$this->load->view('file/user_view');
 	}
+	function edit_user(){
+		$edit_id=$this->uri->segment(3);
+		if (!empty($edit_id)) {
+			$data['edit_id']=$edit_id;
+			$this->load->model('user_model');
+			$this->load->view('file/edit_user',$data);
+		} else {
+			echo 'Record ID not find.!';
+		}
+	}
+	function update_user(){
+		if ($this->input->post() && $this->uri->segment(3)) {
+			$data=array(
+				'f_name'=>$this->input->post('f_name'),
+				'm_name'=>$this->input->post('m_name'),
+				'l_name'=>$this->input->post('l_name'),
+				'phone'=>$this->input->post('phone'),
+				'address'=>$this->input->post('address'),
+				'email'=>$this->input->post('email'),
+				'username'=>$this->input->post('username'),				
+				'password'=>sha1($this->input->post('password'))
+				);
+			$this->load->model('user_model');
+			$result=$this->user_model->update($data,array('id'=>$this->uri->segment(3)));
+			if ($result > 0 ) {
+				$return['message']='گوڕانکاری بە سەرکەوتویی پاشەکەوت کڕا';
+				$this->load->view('file/user_view',$return);
+			} else {
+				$return['message']='گوڕانکارێکان سەرکەوتۆ نەبۆن.';
+				$this->load->view('file/user_view',$return);
+			}
+		}
+	}
 }

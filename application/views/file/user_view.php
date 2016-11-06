@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>موشتەرێکان</title>
+	<title>بەکار هێنەران</title>
 </head>
 <body>
 <div class="container">
@@ -31,7 +31,7 @@
     </div>
   </div>
    <div class="form-group">
-    <label  class="col-sm-4 control-label">n : </label>
+    <label  class="col-sm-4 control-label">ژمارە تلفون: </label>
     <div class="col-sm-8">
       <input class="form-control" type="text" name="phone"  placeholder="ژمارە تلفون  " required>
     </div>
@@ -46,12 +46,6 @@
     <label class="col-sm-4 control-label">ئیمەیل </label>
     <div class="col-sm-8">
       <input class="form-control" type="text" name="email" placeholder="ئیمەیل"  required>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-4 control-label">کەفیل </label>
-    <div class="col-sm-8">
-      <input class="form-control" type="text" name="suporter" placeholder="کەفیل"  required>
     </div>
   </div>
   <div class="form-group">
@@ -100,32 +94,12 @@
 $(document).ready(function(){
 
 	var base_url='<?php echo base_url(); ?>'+'index.php/';
-    $('#table').on('click','#delete',function(e) {
-      var object = $(this);
-    if (confirm('ئایا دڵنیای لە ڕەش کردنەوە ؟')) {
-      delete_id = $(this).attr('href');
-    $.ajax({
-      url:base_url + 'define/delete_customer/' + delete_id ,
-      type:'POST',
-    success:function(data){
-      console.log(data);
-      $('#notify').html(data).show();
-      var td=object.parent();
-      var tr=td.parent();
-      tr.fadeOut(2000).remove();
-      },
-    error:function(data){
-      console.log(data);
-      $('#notify').html(data).show().fadeOut(5000);
-      }
-    }); }
-    e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
-    });
-  /* Edit Bank Account */
+
+  /* Edit User Account */
 $('#table').on('click','#edit',function(e) {
-      edit_bank_id = $(this).attr('href');
+      edit_user_id = $(this).attr('href');
     $.ajax({
-      url:base_url + 'define/edit_customer/' + edit_bank_id ,
+      url:base_url + 'file/edit_user/' + edit_user_id ,
       type:'POST',
     success:function(data){
       $('#form').html(data);
