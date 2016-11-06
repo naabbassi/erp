@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Accounts Report</title>
+	<title>ڕاپورتی هەژمارەکان</title>
 </head>
 <body>
 <div class="container">
@@ -11,7 +11,7 @@
   	<form role="form" class="form-horizontal" id="form" action="accounts_report_prepare" method="post">
   		<div class="col-md-7">
 			  <div class="form-group">
-			    <label class="col-sm-4 control-label">Accounts Group</label>
+			    <label class="col-sm-4 control-label">گروپی هەژمارەکان</label>
 			    <div class="col-sm-8">
 				    <select name="group_id" class="form-control" id="group_accounts" required>
 				    	<option></option>
@@ -25,7 +25,7 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-			    <label for="inputPassword3" class="col-sm-4 control-label">Ledger Accounts</label>
+			    <label for="inputPassword3" class="col-sm-4 control-label">هەژمارە سەرکیەکان</label>
 			    <div class="col-sm-8">
 				    <select name="ledger_id" class="form-control" id="ledger_accounts" required>
 				    	<option></option>
@@ -33,7 +33,7 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-			    <label  class="col-sm-4 control-label">Subsaidiary Accounts</label>
+			    <label  class="col-sm-4 control-label">ژێر هەژمارەکان</label>
 			    <div class="col-sm-8">
 				    <select name="sub_id" class="form-control" id="sub_accounts" >
 				    	<option ></option>
@@ -41,7 +41,7 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-			    <label  class="col-sm-4 control-label">Detailed Accounts</label>
+			    <label  class="col-sm-4 control-label">هەژمارە وردەکان </label>
 			    <div class="col-sm-8" id="detail_accounts">
 
 				</div>
