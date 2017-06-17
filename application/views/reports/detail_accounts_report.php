@@ -27,9 +27,9 @@
 			$ledger=$this->ledger_accounts_model->findbyid($this->input->post('ledger_id'));
 			$sub=$this->sub_accounts_model->findbyid($this->input->post('sub_id'));
 		 ?>
-		<p>Accounts Group : <?php echo $group->title.' ('.$this->input->post('group_id').')';  ?></p>
-		<p>Ledger Account : <?php echo $ledger->title.' ('.$this->input->post('ledger_id').')'; ?></p>
-		<p>Subsidiary Account : <?php echo $sub->title.' ('.$this->input->post('sub_id').')'; ?></p>
+		<p>گروپی هەژمار : <?php echo $group->title.' ('.$this->input->post('group_id').')';  ?></p>
+		<p>هەژماری سەرەکی : <?php echo $ledger->title.' ('.$this->input->post('ledger_id').')'; ?></p>
+		<p>ژێر هەژمار : <?php echo $sub->title.' ('.$this->input->post('sub_id').')'; ?></p>
 		<p>Detail Account : <?php echo $this->details->get_title($sub->id,$this->input->post('detail_id')).' ('.$this->input->post('detail_id').')';  ?></p>
 		<p><?php echo date("y-m-d"); ?></p>
 	</div>

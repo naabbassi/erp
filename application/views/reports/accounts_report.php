@@ -50,7 +50,7 @@
 		<div class="clearfix"></div><br>
 	        <div class="form-group">
         <div class="col-sm-offset-2 col-sm-6">
-        	<button type="submit" class="btn btn-primary">Get Report</button>
+        	<button type="submit" class="btn btn-primary">ڕاپۆرتە کە وەربگرە</button>
         </div>
       </div>
 	</form>

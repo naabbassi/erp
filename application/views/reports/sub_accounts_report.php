@@ -12,7 +12,7 @@
 		}
 		.left{
 			text-align:left;
-			padding-left:15px;
+			padding-right:15px;
 		}
 		.blue{
 			color:#8b4d28;
@@ -21,17 +21,17 @@
 </head>
 <body>
 <div class="container">
-	<div style="position:absolute; left:15px;text-align:left;top:15px;">
+	<div style="padding:15px 15px 10px 0; text-align:right;top:15px;width:500px !important;height:80px !important;">
 		<?php
 			$group=$this->group_accounts_model->findbyid($this->input->post('group_id'));
 			$ledger=$this->ledger_accounts_model->findbyid($this->input->post('ledger_id'));
 			$sub=$this->sub_accounts_model->findbyid($this->input->post('sub_id'));
 		 ?>
-		<p>Accounts Group : <?php echo $group->title; ?></p>
-		<p>Ledger Account : <?php echo $ledger->title.' ('.$this->input->post('ledger_id').')'; ?></p>
-		<p>Subsidiary Account : <?php echo $sub->title.' ('.$this->input->post('sub_id').')'; ?></p>
+		<p>گروپی هەژمار : <?php echo $group->title; ?></p>
+		<p>هەژماری سەڕەکی : <?php echo $ledger->title.' ('.$this->input->post('ledger_id').')'; ?></p>
+		<p style="width: 100%">ژێر هەژمار : <?php echo $sub->title.' ('.$this->input->post('sub_id').')'; ?></p>
 	</div>
-		<br><br><br><br><br><br>
+		<div class="clearfix">
 	<table>
 		<tr>
 			<td class="bold">Record ID</td>
